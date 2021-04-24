@@ -77,3 +77,5 @@ crashlytics-build.properties
 /Packages/com.unity.probuilder/Settings.json
 
 /Recordings
+/ProjectSettings/Packages/com.unity.polybrush/Settings.json
+/ProjectSettings/Packages/com.unity.probuilder/Settings.json
