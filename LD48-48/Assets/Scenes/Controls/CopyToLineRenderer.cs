@@ -1,30 +1,33 @@
 using BezierSolution;
 using UnityEngine;
 
-[ExecuteInEditMode]
-public class CopyToLineRenderer : MonoBehaviour
+namespace Scenes.Controls
 {
-    public BezierSpline bezier;
-
-    public LineRenderer lineRenderer;
-
-    public int multiplyPoints = 1;
-
-    public Vector3 offset;
-
-    // Update is called once per frame
-    // [ContextMenu("Regenerate")]
-    private void LateUpdate()
+    [ExecuteInEditMode]
+    public class CopyToLineRenderer : MonoBehaviour
     {
-        var count = bezier.Count;
-        lineRenderer.positionCount = count * multiplyPoints;
-        // var positions = new Vector3[count];
-        for (var i = 0; i < lineRenderer.positionCount; i++)
+        public BezierSpline bezier;
+
+        public LineRenderer lineRenderer;
+
+        public int multiplyPoints = 1;
+
+        public Vector3 offset;
+
+        // Update is called once per frame
+        // [ContextMenu("Regenerate")]
+        private void LateUpdate()
         {
-            var pointT = (i / (float) multiplyPoints) / (float) count;
-            lineRenderer.SetPosition(i, bezier.GetPoint(pointT) + offset);
-            // positions[i] = bezier[i].position;
+            var count = bezier.Count;
+            lineRenderer.positionCount = count * multiplyPoints;
+            // var positions = new Vector3[count];
+            for (var i = 0; i < lineRenderer.positionCount; i++)
+            {
+                var pointT = (i / (float) multiplyPoints) / (float) count;
+                lineRenderer.SetPosition(i, bezier.GetPoint(pointT) + offset);
+                // positions[i] = bezier[i].position;
+            }
+            // lineRenderer.SetPositions(positions);
         }
-        // lineRenderer.SetPositions(positions);
     }
 }
