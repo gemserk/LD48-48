@@ -1,3 +1,4 @@
+using System;
 using BezierSolution;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,18 +18,43 @@ namespace Scenes.Controls
         public float tiltAngle = 15.0f;
 
         public float jumpTreshold = 0.1f;
-        private bool attached = true;
+        private bool attached => bezierWalker.spline != null;
 
         public Vector3 jumpForce = new Vector3(0, 100, 0);
         public ForceMode forceMode = ForceMode.Force;
 
         public float jumpDuration = 0.25f;
 
+        public float jumpForwardSpeedFactor = 0.5f;
+
         private float currentJumpDuration;
 
         private void Start()
         {
             rigidBody.isKinematic = true;
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            var collider = other.collider;
+            if (collider != null)
+            {
+                var temporaryCopyRenderer = collider.gameObject.GetComponentInChildren<CopyToLineRenderer>();
+                if (temporaryCopyRenderer != null)
+                {
+                    bezierWalker.spline = temporaryCopyRenderer.bezier;
+                    
+                    float normalizedT;
+                    var bezierPosition =
+                        temporaryCopyRenderer.bezier.FindNearestPointTo(transform.position, out normalizedT);
+
+                    transform.position = bezierPosition;
+                    bezierWalker.NormalizedT = normalizedT;
+                    
+                    bezierWalker.enabled = true;
+                    rigidBody.isKinematic = true;
+                }
+            }
         }
 
         private void FixedUpdate()
@@ -43,31 +69,26 @@ namespace Scenes.Controls
             
             currentJumpDuration -= Time.deltaTime;
 
-            // if (attached)
-            // {
-            //
-            // }
-            // else
-            // {
-            //     // tilt in air is move right/left or something alos
-            // }
-
             if (jumpValue > jumpTreshold)
             {
                 if (attached)
                 {
                     bezierWalker.enabled = false;
+                    bezierWalker.spline = null;
+                    
                     rigidBody.isKinematic = false;
-                    attached = false;
+                    // attached = false;
                     
-                    // set moving velocity (in x at lease)
-                    
+                    // set moving velocity (in x at lease
+
                     if (forceMode == ForceMode.Impulse)
                     {
                         rigidBody.AddForce(jumpForce, forceMode);
                     }
 
                     currentJumpDuration = jumpDuration;
+
+                    rigidBody.velocity = transform.forward.normalized * bezierWalker.speed * jumpForwardSpeedFactor;
                 }
                 
                 if (currentJumpDuration > 0)
@@ -83,7 +104,9 @@ namespace Scenes.Controls
 
             if (!attached)
             {
-                
+                localEulerAngles = modelTransform.localEulerAngles;
+                localEulerAngles.x = -tiltAngle;
+                modelTransform.localEulerAngles = localEulerAngles;
             }
 
             // if (jumpActionRef.action.triggered)
