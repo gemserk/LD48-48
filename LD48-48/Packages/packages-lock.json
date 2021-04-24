@@ -166,6 +166,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.yasirkula.beziersolution": {
+      "version": "2.0.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
