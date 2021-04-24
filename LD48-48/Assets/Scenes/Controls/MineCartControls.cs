@@ -8,6 +8,7 @@ namespace Scenes.Controls
     {
         public BezierWalkerWithSpeed bezierWalker;
 
+        public Transform modelTransform;
         public Rigidbody rigidBody;
 
         public PlayerInput playerInput;
@@ -24,14 +25,12 @@ namespace Scenes.Controls
 
         private void Update()
         {
-            // var tiltAction = playerInput.actions[tiltActionName];
             var tiltAction = tiltActionRef.action;
-            // playerInput.actions[tiltActionRef.action]
             var tiltVector = tiltAction.ReadValue<Vector2>();
 
-            var localEulerAngles = transform.localEulerAngles;
-            localEulerAngles.z = tiltVector.x * tiltAngle;
-            transform.localEulerAngles = localEulerAngles;
+            var localEulerAngles = modelTransform.localEulerAngles;
+            localEulerAngles.z = -tiltVector.x * tiltAngle;
+            modelTransform.localEulerAngles = localEulerAngles;
             
             // Debug.Log(tiltVector);
             // tiltLeft.

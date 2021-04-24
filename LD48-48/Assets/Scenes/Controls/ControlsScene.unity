@@ -11491,12 +11491,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bezierWalker: {fileID: 1303463855}
+  modelTransform: {fileID: 2092150212}
   rigidBody: {fileID: 1303463856}
   playerInput: {fileID: 1303463858}
   tiltActionRef: {fileID: -515805540173997014, guid: 5d18670741e6d5542986cf88132d6d14, type: 3}
   jumpActionRef: {fileID: -2605949509075620080, guid: 5d18670741e6d5542986cf88132d6d14, type: 3}
-  tiltActionName: Tilt
-  jumpActionName: 
+  tiltAngle: 15
 --- !u!114 &1303463858
 MonoBehaviour:
   m_ObjectHideFlags: 0
