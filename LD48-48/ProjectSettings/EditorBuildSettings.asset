@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/EmptyScene.unity
-    guid: 7f33d4005587c4871bd584658b5c43d8
+    path: Assets/Scenes/TrackFollower.unity
+    guid: 64539fcedc258447db60969681d5835c
   m_configObjects: {}
