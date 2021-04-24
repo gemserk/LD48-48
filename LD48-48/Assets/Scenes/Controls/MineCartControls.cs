@@ -23,12 +23,17 @@ namespace Scenes.Controls
         public Vector3 jumpForce = new Vector3(0, 100, 0);
         public ForceMode forceMode = ForceMode.Force;
 
+        public Vector3 moveWhileJumpForce = new Vector3(0,0, 100);
+        
         public float jumpDuration = 0.25f;
 
         public float jumpForwardSpeedFactor = 0.5f;
+        public float jumpUpVelocityFactor = 1.0f;
 
+        // public float timeToActivateRigidBody = 0.25f;
+        
         private float currentJumpDuration;
-
+        
         private void Start()
         {
             rigidBody.isKinematic = true;
@@ -65,6 +70,12 @@ namespace Scenes.Controls
             // tilt logic while attached to track
             var localEulerAngles = modelTransform.localEulerAngles;
             localEulerAngles.z = -tiltVector.x * tiltAngle;
+
+            if (!attached)
+            {
+                localEulerAngles.x = -tiltAngle;
+            }
+            
             modelTransform.localEulerAngles = localEulerAngles;
             
             currentJumpDuration -= Time.deltaTime;
@@ -88,7 +99,11 @@ namespace Scenes.Controls
 
                     currentJumpDuration = jumpDuration;
 
-                    rigidBody.velocity = transform.forward.normalized * bezierWalker.speed * jumpForwardSpeedFactor;
+                    var forwardVelocity = transform.forward.normalized * bezierWalker.speed * jumpForwardSpeedFactor;
+                    var verticalVelocity = Vector3.up * jumpUpVelocityFactor;
+                    
+                    // initial velocity while starting jump
+                    rigidBody.velocity = forwardVelocity + verticalVelocity;
                 }
                 
                 if (currentJumpDuration > 0)
@@ -104,9 +119,10 @@ namespace Scenes.Controls
 
             if (!attached)
             {
-                localEulerAngles = modelTransform.localEulerAngles;
-                localEulerAngles.x = -tiltAngle;
-                modelTransform.localEulerAngles = localEulerAngles;
+                // localEulerAngles = modelTransform.localEulerAngles;
+                // localEulerAngles.x = -tiltAngle;
+                // modelTransform.localEulerAngles = localEulerAngles;
+                rigidBody.AddForce(tiltVector.x * moveWhileJumpForce * Time.deltaTime, ForceMode.Force);
             }
 
             // if (jumpActionRef.action.triggered)
