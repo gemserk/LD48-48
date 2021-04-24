@@ -72,10 +72,6 @@ crashlytics-build.properties
 .DS_Store
 /.idea
 
-
-/Packages/com.unity.polybrush/Settings.json
-/Packages/com.unity.probuilder/Settings.json
-
 /Recordings
 /ProjectSettings/Packages/com.unity.polybrush/Settings.json
 /ProjectSettings/Packages/com.unity.probuilder/Settings.json
