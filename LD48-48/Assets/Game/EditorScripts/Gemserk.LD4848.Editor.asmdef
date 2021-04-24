@@ -1,7 +1,9 @@
 {
     "name": "Gemserk.LD4848.Editor",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:0788d8cebedcb4fd3a530eb03eee95e1"
+    ],
     "includePlatforms": [
         "Editor"
     ],

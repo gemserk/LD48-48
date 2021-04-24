@@ -71,3 +71,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 .DS_Store
 /.idea
+
+
+/Packages/com.unity.polybrush/Settings.json
+/Packages/com.unity.probuilder/Settings.json
