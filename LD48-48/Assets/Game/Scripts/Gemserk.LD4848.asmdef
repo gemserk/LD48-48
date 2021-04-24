@@ -1,3 +1,16 @@
 {
-	"name": "Gemserk.LD4848"
+    "name": "Gemserk.LD4848",
+    "rootNamespace": "",
+    "references": [
+        "GUID:624c061ee4dfdaf4787b9c0bb51b4c1f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
