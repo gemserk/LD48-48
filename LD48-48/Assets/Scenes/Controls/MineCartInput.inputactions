@@ -19,7 +19,7 @@
                     "id": "82cbd20a-22a2-448d-9e25-c1993b91b5c3",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Hold(pressPoint=0.1)"
                 }
             ],
             "bindings": [

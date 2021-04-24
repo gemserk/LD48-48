@@ -10,15 +10,19 @@ namespace Scenes.Controls
 
         public LineRenderer lineRenderer;
 
+        public MeshFilter meshFilter;
+
+        public MeshCollider meshCollider;
+
         public int multiplyPoints = 1;
 
         public Vector3 offset;
 
-        // Update is called once per frame
-        // [ContextMenu("Regenerate")]
         private void LateUpdate()
         {
             var count = bezier.Count;
+            
+            lineRenderer.enabled = true;
             lineRenderer.positionCount = count * multiplyPoints;
             // var positions = new Vector3[count];
             for (var i = 0; i < lineRenderer.positionCount; i++)
@@ -28,6 +32,16 @@ namespace Scenes.Controls
                 // positions[i] = bezier[i].position;
             }
             // lineRenderer.SetPositions(positions);
+
+            if (meshFilter != null)
+            {
+                var mesh = new Mesh();
+                lineRenderer.BakeMesh(mesh);
+                meshFilter.sharedMesh = mesh;
+                lineRenderer.enabled = false;
+
+                meshCollider.sharedMesh = mesh;
+            }
         }
     }
 }
