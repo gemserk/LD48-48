@@ -20,6 +20,9 @@ namespace Scenes.Controls
 
         private void LateUpdate()
         {
+            if (bezier == null)
+                return;
+            
             var count = bezier.Count;
             
             lineRenderer.enabled = true;
@@ -42,6 +45,8 @@ namespace Scenes.Controls
 
                 meshCollider.sharedMesh = mesh;
             }
+
+            lineRenderer.positionCount = 0;
         }
     }
 }

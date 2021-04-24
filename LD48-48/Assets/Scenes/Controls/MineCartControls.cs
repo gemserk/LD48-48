@@ -31,7 +31,7 @@ namespace Scenes.Controls
             rigidBody.isKinematic = true;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             var tiltVector = tiltActionRef.action.ReadValue<Vector2>();
             var jumpValue = jumpActionRef.action.ReadValue<float>();
@@ -41,7 +41,7 @@ namespace Scenes.Controls
             localEulerAngles.z = -tiltVector.x * tiltAngle;
             modelTransform.localEulerAngles = localEulerAngles;
             
-            jumpDuration -= Time.deltaTime;
+            currentJumpDuration -= Time.deltaTime;
 
             // if (attached)
             // {
@@ -70,7 +70,7 @@ namespace Scenes.Controls
                     currentJumpDuration = jumpDuration;
                 }
                 
-                if (jumpDuration > 0)
+                if (currentJumpDuration > 0)
                 {
                     // TODO: apply force given normal of the bezier, not just vector up
 
