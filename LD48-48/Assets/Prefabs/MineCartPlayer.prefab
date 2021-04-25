@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6671926457576573133}
   - component: {fileID: 645967009259333488}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BottomLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 6539906006148726172}
   - component: {fileID: 6539906006148726173}
   - component: {fileID: 6539906006148726174}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: MineCartPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,6 +416,10 @@ PrefabInstance:
     - target: {fileID: 7614521876617730637, guid: 53d8c61191dd8ee4db51dfbb5f8d5b89, type: 3}
       propertyPath: m_Name
       value: Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 7614521876617730637, guid: 53d8c61191dd8ee4db51dfbb5f8d5b89, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53d8c61191dd8ee4db51dfbb5f8d5b89, type: 3}

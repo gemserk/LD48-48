@@ -16,6 +16,8 @@ namespace Game.Scripts
         public GameObject mineTrackPrefab;
 
         public GameObject mineTrackMeshGenerator;
+
+        public WallsSpawnerPlayerMonitor wallsSpawner;
         
         public bool splineAutogenerateNormals;
 
@@ -43,6 +45,12 @@ namespace Game.Scripts
             meshGenerator = mineTrackMeshGenerator.GetComponent<TrackMeshGenerator>();
             mineCartController.DettachFromTrack();
             StartCoroutine(WorldGenerationOverTime());
+
+            if (wallsSpawner != null)
+            {
+                wallsSpawner.mainSpline = masterSpline;
+                wallsSpawner.controller = mineCartController;
+            }
         }
 
         private IEnumerator WorldGenerationOverTime()

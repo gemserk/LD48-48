@@ -1,5 +1,91 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4304704400678527700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3214676645205601820}
+  - component: {fileID: 2439387777865704239}
+  - component: {fileID: 4310149073402554711}
+  m_Layer: 0
+  m_Name: WallsSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3214676645205601820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4304704400678527700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4822543804802527255}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2439387777865704239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4304704400678527700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306e67febb88d4846a54f169451eea69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spline: {fileID: 0}
+  floorPrefabs:
+  - {fileID: 8975798757828218513, guid: 38347aaf5190c47fab678a0358aa006c, type: 3}
+  floorWidth: 20
+  floorMinDistance: 1
+  floorMaxDistance: 3
+  floorPrefabOffsetX: 0.77
+  floorPrefabDistanceBetween: 1.55
+  floorDeltaMovement: 0.5
+  floorSpawnChance: 0.3
+  lightsDistanceBetween: 3
+  lightPrefabs:
+  - {fileID: 4496946856997334115, guid: 679747e939d564c2f902aa3dc0287e80, type: 3}
+  - {fileID: 4496946856997334115, guid: 05b8e294473dd4895b17109a1c5da406, type: 3}
+  - {fileID: 4496946856997334115, guid: ede93c71c8e2840d59fd36836df452c9, type: 3}
+  lightOffsetY: 1
+  wallDistanceFromPathMin: 10
+  wallDistanceFromPathMax: 6
+  wallDeltaMovement: 1
+  wallSpawnChance: 0.8
+  wallPrefabs:
+  - {fileID: 2964811313734450062, guid: 383b3ac15e76c492db252b51155f8888, type: 3}
+  wallYPos: -50
+  autoGenerate: 0
+  generateUntil: 0
+--- !u!114 &4310149073402554711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4304704400678527700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40d83562abfc4e71ac17eb9d0d02bc19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  mainSpline: {fileID: 0}
+  wallsSpawner: {fileID: 2439387777865704239}
+  lookAhead: 50
+  cleanBehind: 0
 --- !u!1 &4822543804802527258
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,6 +116,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4584758187411482407}
+  - {fileID: 3214676645205601820}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49,6 +136,7 @@ MonoBehaviour:
   trackGenerator: {fileID: 4822543804802527257}
   mineTrackPrefab: {fileID: 6679982335693048751, guid: d836f39e828a31b4fb5284c386974e39, type: 3}
   mineTrackMeshGenerator: {fileID: 5091740593288377241}
+  wallsSpawner: {fileID: 4310149073402554711}
   splineAutogenerateNormals: 0
   minSegmentLength: 100
   maxSegmentLength: 100
@@ -66,11 +154,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a226080a704a7e980f225efd7c9175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  steps: 5
+  steps: 100
   stepDistanceMin: 10
   stepDistanceMax: 15
   descentPerStep: -0.1
-  maxRandomOffset: {x: 5, y: 5}
+  maxRandomOffset: {x: 2, y: 2}
   minRandomOffset: {x: 1, y: 1}
 --- !u!1001 &4822543805303845848
 PrefabInstance:

@@ -27,8 +27,6 @@ public class WallsSpawner : MonoBehaviour
     float floorNormalizedT = 0;
     int floorIteration = 0;
     float floorCummulativeDistance = 0;
-    
-    
 
     public float wallDistanceFromPathMin;
     public float wallDistanceFromPathMax;
@@ -47,6 +45,9 @@ public class WallsSpawner : MonoBehaviour
 
     public void Awake()
     {
+        if (spline == null)
+            return;
+        
         if (autoGenerate)
         {
             generateUntil = spline.Length;

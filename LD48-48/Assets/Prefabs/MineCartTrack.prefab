@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7997485882719127761}
   - component: {fileID: 3261306512302850496}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 5891547454677979004}
   - component: {fileID: 8347046215744839844}
   - component: {fileID: 4890918273787819182}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7610127900742717637}
   - component: {fileID: 6477345384456332036}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bezier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6679982335693048737}
   - component: {fileID: 7148712764900884189}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MineCartTrack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,6 +252,8 @@ MonoBehaviour:
   meshFilter: {fileID: 5891547454677979004}
   meshCollider: {fileID: 4890918273787819182}
   spline: {fileID: 6477345384456332036}
+  regenerateMeshOnLateUpdate: 1
+  trackMeshGenerator: {fileID: 0}
 --- !u!1 &7040963955310010830
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1625269151528757886}
   - component: {fileID: 8943583644367665388}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}

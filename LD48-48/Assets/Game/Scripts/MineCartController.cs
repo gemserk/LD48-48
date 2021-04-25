@@ -66,6 +66,8 @@ namespace Game.Scripts
             currentTimeToActivateRigidBody = 0;
 
             currentMineCartTrack = null;
+
+            // waitingForColliderReattach = true;
         }
 
         private void AttachToTrack(GameObject trackObject)
@@ -105,15 +107,25 @@ namespace Game.Scripts
             var collider = other.collider;
             if (collider != null)
             {
+                // var obstacle = other.gameObject.GetComponentInParent<MineObstacle>();
+                // if (obstacle != null)
+                // {
+                //     var contact = other.GetContact(0);
+                //     rigidBody.AddRelativeForce(contact.normal * 100f, ForceMode.Impulse);
+                //     return;
+                // }
                 AttachToTrack(collider.gameObject);
             }
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            // Debug.Log($"OnTriggerEnter: {other.gameObject.name}");
+            
             var obstacle = other.gameObject.GetComponentInParent<MineObstacle>();
             if (obstacle != null)
             {
+                // obstacle.DisableCollisions();
                 ReleaseControls();
                 return;
             }
@@ -125,6 +137,8 @@ namespace Game.Scripts
 
         private void OnTriggerExit(Collider other)
         {
+            // Debug.Log($"OnTriggerExit: {other.gameObject.name}");
+
             var temporaryCopyRenderer = other.gameObject.GetComponent<CopyToLineRenderer>();
             if (temporaryCopyRenderer != null && temporaryCopyRenderer.bezier != null)
             {
@@ -132,6 +146,12 @@ namespace Game.Scripts
             }
         }
 
+        public float minRandomForceOnCollision = 100.0f;
+        public float maxRandomForceOnCollision = 200.0f;
+        
+        public float minRandomTorqueOnCollision = 100.0f;
+        public float maxRandomTorqueOnCollision = 200.0f;
+        
         private void ReleaseControls()
         {
             DettachFromTrack();
@@ -140,10 +160,13 @@ namespace Game.Scripts
             rigidBody.isKinematic = false;
             rigidBody.detectCollisions = true;
             rigidBody.constraints = RigidbodyConstraints.None;
-            
-            rigidBody.AddForce(UnityEngine.Random.Range(-1, 1) * 100, 0, 0, ForceMode.Impulse);
-            rigidBody.AddTorque(UnityEngine.Random.Range(-1, 1) * 100, 0, 0, ForceMode.Impulse);
 
+            var direction = Mathf.Sign(UnityEngine.Random.Range(-1.0f, 1.0f));
+
+            var lateralForce = transform.right * direction;
+            
+            rigidBody.AddForce(lateralForce * UnityEngine.Random.Range(minRandomForceOnCollision, maxRandomForceOnCollision), ForceMode.Impulse);
+            rigidBody.AddRelativeTorque(lateralForce * UnityEngine.Random.Range(minRandomTorqueOnCollision, maxRandomTorqueOnCollision), ForceMode.Impulse);
             
             // apply force in random direction?
         }
