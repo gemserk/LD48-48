@@ -8,6 +8,10 @@ public class RandomTrackController : MonoBehaviour
     public TrackRandomGenerator trackRandomGenerator;
     public WallsSpawner wallsSpawner;
 
+    public GameObject trackPrefab;
+    
+    
+
     private void Awake()
     {
         BezierSpline spline = wallsSpawner.spline;
