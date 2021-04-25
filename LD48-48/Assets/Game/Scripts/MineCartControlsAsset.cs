@@ -16,7 +16,7 @@ namespace Game.Scripts
         public Vector3 jumpForce = new Vector3(0, 100, 0);
         public ForceMode forceMode = ForceMode.Force;
 
-        public Vector3 moveWhileJumpForce = new Vector3(0,0, 100);
+        public float moveWhileJumpForceFactor = 750.0f;
         
         public float jumpDuration = 0.25f;
 
