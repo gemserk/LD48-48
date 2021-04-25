@@ -1,8 +1,6 @@
-using System;
 using BezierSolution;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Scenes.Controls
 {
@@ -28,6 +26,8 @@ namespace Scenes.Controls
         private void Start()
         {
             rigidBody.isKinematic = true;
+            if (controlsAsset.overrideRigidBodyMass > 0)
+                rigidBody.mass = controlsAsset.overrideRigidBodyMass;
         }
 
         private void AttachToTrack(GameObject track)

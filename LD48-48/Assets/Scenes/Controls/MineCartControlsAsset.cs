@@ -22,5 +22,7 @@ namespace Scenes.Controls
         public float jumpTiltVelocityFactor = 5.0f;
 
         public float timeToActivateRigidBody = 0.25f;
+        
+        public float overrideRigidBodyMass = 5.0f;
     }
 }
