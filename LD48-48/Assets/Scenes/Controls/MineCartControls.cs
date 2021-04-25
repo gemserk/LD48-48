@@ -1,3 +1,4 @@
+using System;
 using Game.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -142,7 +143,20 @@ namespace Scenes.Controls
                 }
             }
 
-            if (!attached)
+            if (attached)
+            {
+                var forwardAngle = transform.localEulerAngles.x;
+                if (forwardAngle > 180)
+                {
+                    forwardAngle -= 360;
+                }
+                var t = (forwardAngle + 90.0f) / 180.0f;
+
+                bezierWalker.speed = Mathf.Lerp(controlsAsset.minTravelSpeed, controlsAsset.maxTravelSpeed, t);
+                
+                // Debug.Log($"{t}, {bezierWalker.speed}, {forwardAngle}");
+
+            } else 
             {
                 if (currentTimeToActivateRigidBody < 0)
                 {
@@ -169,6 +183,15 @@ namespace Scenes.Controls
 
             // Debug.Log(tiltVector);
             // tiltLeft.
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            if (bezierWalker != null)
+            {
+                Gizmos.color = Color.blue;
+                Gizmos.DrawLine(transform.position, transform.position + transform.forward * bezierWalker.speed);
+            }
         }
     }
 }

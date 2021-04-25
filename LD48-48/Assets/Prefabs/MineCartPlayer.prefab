@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spline: {fileID: 0}
   travelMode: 1
-  speed: 20
+  speed: 1
   m_normalizedT: 0
   rotationLerpModifier: 10
   lookAt: 1

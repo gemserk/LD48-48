@@ -23,3 +23,6 @@ MonoBehaviour:
   jumpUpVelocityFactor: 1
   jumpTiltVelocityFactor: 2.5
   timeToActivateRigidBody: 0.25
+  overrideRigidBodyMass: 5
+  minTravelSpeed: 10
+  maxTravelSpeed: 25
