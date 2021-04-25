@@ -25,7 +25,7 @@ MonoBehaviour:
   jumpTiltVelocityFactor: 2.5
   timeToActivateRigidBody: 0.25
   overrideRigidBodyMass: 4
-  slopeMinTravelSpeed: 5
+  slopeMinTravelSpeed: 10
   slopeMaxTravelSpeed: 25
-  tiltMinTravelSpeedMultiplier: 0.35
-  tiltMaxTravelSpeedMultiplier: 1.35
+  tiltMinTravelSpeedMultiplier: 0.75
+  tiltMaxTravelSpeedMultiplier: 1.25
