@@ -26,6 +26,9 @@ namespace Game.Scripts
         public int minSegmentLength = 100;
         public int maxSegmentLength = 100;
 
+        public Vector3 minOffsetTrack;
+        public Vector3 maxOffsetTrack;
+
         private void Start()
         {
             var masterSplineObject = new GameObject("~MasterSpline")
@@ -48,9 +51,13 @@ namespace Game.Scripts
             
             CopyToSpline(masterSpline, points);
 
-            CreateMineTrack(new Vector3(-3, 0, 0));
+            CreateMineTrack(new Vector3(-UnityEngine.Random.Range(minOffsetTrack.x, maxOffsetTrack.x), 
+                UnityEngine.Random.Range(minOffsetTrack.y, maxOffsetTrack.y), 
+                UnityEngine.Random.Range(minOffsetTrack.z, maxOffsetTrack.z)));
             CreateMineTrack(new Vector3(0, 0, 0));
-            CreateMineTrack(new Vector3(3, 0, 0));
+            CreateMineTrack(new Vector3(UnityEngine.Random.Range(minOffsetTrack.x, maxOffsetTrack.x), 
+                UnityEngine.Random.Range(minOffsetTrack.y, maxOffsetTrack.y), 
+                UnityEngine.Random.Range(minOffsetTrack.z, maxOffsetTrack.z)));
 
             // CopySplineSegment(masterSpline, mineTrack.spline, 0, 20, Vector3.zero);
 
@@ -100,7 +107,7 @@ namespace Game.Scripts
                 // apply noise + offset
             }
             
-            // targetSpline.AutoConstructSpline2();
+            targetSpline.AutoConstructSpline2();
         }
 
         private void CopyToSpline(BezierSpline spline, IReadOnlyList<Vector3> points)
@@ -112,6 +119,7 @@ namespace Game.Scripts
                 var position = points[index];
                 splinePoint.position = position;
                 splinePoint.normal = Vector3.up;
+                splinePoint.localRotation = Quaternion.identity;
             }
         
             spline.AutoConstructSpline2();

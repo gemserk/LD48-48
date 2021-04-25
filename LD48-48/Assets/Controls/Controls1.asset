@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Controls1
   m_EditorClassIdentifier: 
   tiltAngle: 15
+  forwardTiltAngle: 10
   jumpTiltXAngle: 25
   jumpStartTreshold: 0.1
   jumpForce: {x: 0, y: 10000, z: 0}
@@ -23,7 +24,7 @@ MonoBehaviour:
   jumpUpVelocityFactor: 1
   jumpTiltVelocityFactor: 2.5
   timeToActivateRigidBody: 0.25
-  overrideRigidBodyMass: 5
+  overrideRigidBodyMass: 4
   slopeMinTravelSpeed: 5
   slopeMaxTravelSpeed: 25
   tiltMinTravelSpeedMultiplier: 0.35

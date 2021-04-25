@@ -50,6 +50,10 @@ MonoBehaviour:
   mineTrackPrefab: {fileID: 6679982335693048751, guid: d836f39e828a31b4fb5284c386974e39, type: 3}
   mineTrackMeshGenerator: {fileID: 5091740593288377241}
   splineAutogenerateNormals: 0
+  minSegmentLength: 100
+  maxSegmentLength: 100
+  minOffsetTrack: {x: 4, y: -2, z: 0}
+  maxOffsetTrack: {x: 7, y: 2, z: 0}
 --- !u!114 &4822543804802527257
 MonoBehaviour:
   m_ObjectHideFlags: 0
