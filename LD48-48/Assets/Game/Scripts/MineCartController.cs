@@ -25,6 +25,8 @@ namespace Game.Scripts
         public ParticleAttachPoint attachToTrackParticle;
 
         private MineCartTrack currentMineCartTrack;
+
+        private bool controlsEnabled = true;
         
         private void Start()
         {
@@ -68,6 +70,9 @@ namespace Game.Scripts
 
         private void AttachToTrack(GameObject trackObject)
         {
+            if (!controlsEnabled)
+                return;
+            
             var mineCartTrack = trackObject.GetComponentInParent<MineCartTrack>();
             if (mineCartTrack == null) 
                 return;
@@ -106,6 +111,13 @@ namespace Game.Scripts
 
         private void OnTriggerEnter(Collider other)
         {
+            var obstacle = other.gameObject.GetComponentInParent<MineObstacle>();
+            if (obstacle != null)
+            {
+                ReleaseControls();
+                return;
+            }
+            
             if (!waitingForColliderReattach)
                 return;
             AttachToTrack(other.gameObject);
@@ -120,8 +132,27 @@ namespace Game.Scripts
             }
         }
 
+        private void ReleaseControls()
+        {
+            DettachFromTrack();
+            controlsEnabled = false;
+            
+            rigidBody.isKinematic = false;
+            rigidBody.detectCollisions = true;
+            rigidBody.constraints = RigidbodyConstraints.None;
+            
+            rigidBody.AddForce(UnityEngine.Random.Range(-1, 1) * 100, 0, 0, ForceMode.Impulse);
+            rigidBody.AddTorque(UnityEngine.Random.Range(-1, 1) * 100, 0, 0, ForceMode.Impulse);
+
+            
+            // apply force in random direction?
+        }
+
         private void FixedUpdate()
         {
+            if (!controlsEnabled)
+                return;
+            
             var tiltVector = tiltActionRef.action.ReadValue<Vector2>();
             var jumpValue = jumpActionRef.action.ReadValue<float>();
 
@@ -202,16 +233,7 @@ namespace Game.Scripts
                 if (currentTimeToActivateRigidBody < 0)
                 {
                     rigidBody.detectCollisions = true;
-                    // triggerCollider.enabled = true;
                 }
-
-                // var playerEuler = transform.localEulerAngles;
-                // playerEuler.x = 0;
-                // transform.localEulerAngles = playerEuler;
-                
-                // localEulerAngles = modelTransform.localEulerAngles;
-                // localEulerAngles.x = -tiltAngle;
-                // modelTransform.localEulerAngles = localEulerAngles;
 
                 var tiltWhileJumpingDirection = transform.right * tiltVector.x;
                 
@@ -225,15 +247,6 @@ namespace Game.Scripts
                         ForceMode.Force);
                 }
             }
-
-            // if (jumpActionRef.action.triggered)
-            // {
-            //     
-            // }
-            
-
-            // Debug.Log(tiltVector);
-            // tiltLeft.
         }
 
         private void OnDrawGizmosSelected()
