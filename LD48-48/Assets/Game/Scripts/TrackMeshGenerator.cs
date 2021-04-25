@@ -5,8 +5,6 @@ namespace Game.Scripts
 {
 	public class TrackMeshGenerator : MonoBehaviour
     {
-        // Used to generate the mesh
-        
         [SerializeField]
         private LineRenderer lineRenderer;
 
@@ -15,12 +13,7 @@ namespace Game.Scripts
 
         [SerializeField]
         private Vector3 offset = new Vector3(0, -0.5f, 0);
-
-        private void Awake()
-        {
-            lineRenderer.enabled = false;
-        }
-
+        
         public static Mesh GenerateMeshStatic(BezierSpline spline, MeshFilter meshFilter, MeshCollider meshCollider)
         {
             var meshGenerator = FindObjectOfType<TrackMeshGenerator>();
@@ -36,7 +29,6 @@ namespace Game.Scripts
         {
             var count = spline.Count;
             
-            lineRenderer.enabled = true;
             lineRenderer.positionCount = count * multiplyPoints;
             
             for (var i = 0; i < lineRenderer.positionCount; i++)
@@ -48,11 +40,9 @@ namespace Game.Scripts
             var mesh = new Mesh();
             lineRenderer.BakeMesh(mesh);
             meshFilter.sharedMesh = mesh;
-            lineRenderer.enabled = false;
             meshCollider.sharedMesh = mesh;
 
             lineRenderer.positionCount = 0;
-            lineRenderer.enabled = false;
 
             return mesh;
         }

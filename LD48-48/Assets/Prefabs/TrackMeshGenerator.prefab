@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 7393823183917869058}
-  multiplyPoints: 10
+  multiplyPoints: 20
   offset: {x: 0, y: -0.5, z: 0}
 --- !u!120 &7393823183917869058
 LineRenderer:
@@ -54,7 +54,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307477454359265345}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -139,7 +139,7 @@ LineRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 0
-    shadowBias: 1
-    generateLightingData: 1
+    shadowBias: 0
+    generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0

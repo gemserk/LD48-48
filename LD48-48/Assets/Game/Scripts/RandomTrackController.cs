@@ -1,4 +1,3 @@
-using BezierSolution;
 using UnityEngine;
 
 public class RandomTrackController : MonoBehaviour
@@ -20,7 +19,8 @@ public class RandomTrackController : MonoBehaviour
 
             splinePoint.position = position;
         }
-        
+
+        spline.loop = false;
         spline.AutoConstructSpline2();
         // spline.AutoCalculateNormals();
         

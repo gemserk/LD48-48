@@ -23,10 +23,13 @@ namespace Game.Scripts
         private bool waitingForColliderReattach;
         
         public ParticleAttachPoint attachToTrackParticle;
+
+        private MineCartTrack currentMineCartTrack;
         
         private void Start()
         {
-            rigidBody.isKinematic = true;
+            // rigidBody.isKinematic = true;
+            
             if (controlsAsset.overrideRigidBodyMass > 0)
                 rigidBody.mass = controlsAsset.overrideRigidBodyMass;
 
@@ -34,19 +37,47 @@ namespace Game.Scripts
             {
                 bezierWalker = GetComponent<BezierWalkerWithSpeedFixedUpdate>();
             }
+            
+            // Start detached from tracks by default and expect to auto attach
+            // DettachFromTrack();
+            
+            bezierWalker.onPathCompleted.AddListener(OnPathCompleted);
         }
 
-        private void AttachToTrack(GameObject track)
+        private void OnPathCompleted()
         {
-            var temporaryCopyRenderer = track.GetComponent<CopyToLineRenderer>();
-            if (temporaryCopyRenderer == null) 
+            if (currentMineCartTrack != null)
+            {
+                currentMineCartTrack.DisableCollisions();
+                DettachFromTrack();
+            }
+        }
+
+        public void DettachFromTrack()
+        {
+            bezierWalker.enabled = false;
+            bezierWalker.spline = null;
+                    
+            rigidBody.isKinematic = false;
+            rigidBody.detectCollisions = false;
+
+            currentTimeToActivateRigidBody = 0;
+
+            currentMineCartTrack = null;
+        }
+
+        private void AttachToTrack(GameObject trackObject)
+        {
+            var mineCartTrack = trackObject.GetComponentInParent<MineCartTrack>();
+            if (mineCartTrack == null) 
                 return;
             
-            bezierWalker.spline = temporaryCopyRenderer.bezier;
+            bezierWalker.spline = mineCartTrack.spline;
                     
             float normalizedT;
+            
             var bezierPosition =
-                temporaryCopyRenderer.bezier.FindNearestPointTo(transform.position, out normalizedT);
+                mineCartTrack.spline.FindNearestPointTo(transform.position, out normalizedT);
         
             transform.position = bezierPosition;
             bezierWalker.NormalizedT = normalizedT;
@@ -60,6 +91,8 @@ namespace Game.Scripts
             {
                 attachToTrackParticle.Spawn();
             }
+
+            currentMineCartTrack = mineCartTrack;
         }
 
         private void OnCollisionEnter(Collision other)
@@ -110,13 +143,7 @@ namespace Game.Scripts
             {
                 if (attached)
                 {
-                    bezierWalker.enabled = false;
-                    bezierWalker.spline = null;
-                    
-                    rigidBody.isKinematic = false;
-                    rigidBody.detectCollisions = false;
-                    
-                    // attached = false;
+                    DettachFromTrack();
                     
                     // set moving velocity (in x at lease
 

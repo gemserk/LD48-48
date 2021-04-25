@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using BezierSolution;
@@ -16,16 +15,20 @@ namespace Game.Scripts
         public GameObject mineTrackPrefab;
 
         public GameObject mineTrackMeshGenerator;
+        
+        public bool splineAutogenerateNormals;
+
+        private TrackMeshGenerator meshGenerator;
 
         private void Start()
         {
+            meshGenerator = mineTrackMeshGenerator.GetComponent<TrackMeshGenerator>();
+            mineCartController.DettachFromTrack();
             StartCoroutine(WorldGenerationOverTime());
         }
 
         private IEnumerator WorldGenerationOverTime()
         {
-            var meshGenerator = mineTrackMeshGenerator.GetComponent<TrackMeshGenerator>();
-
             var mineTrackObject = Instantiate(mineTrackPrefab);
             var mineTrack = mineTrackObject.GetComponent<MineCartTrack>();
 
@@ -33,27 +36,23 @@ namespace Game.Scripts
             
             CopyToSpline(mineTrack.spline, points);
             meshGenerator.GenerateMesh(mineTrack);
-            
-            // for first generation only, attach the cart (or maybe the track should be generated below and
-            // cart always starts falling)
-            mineCartController.bezierWalker.spline = mineTrack.spline;
 
             yield return null;
         }
 
-        private static void CopyToSpline(BezierSpline spline, IReadOnlyList<Vector3> points)
+        private void CopyToSpline(BezierSpline spline, IReadOnlyList<Vector3> points)
         {
             spline.Initialize(points.Count);
             for (var index = 0; index < spline.Count; index++)
             {
                 var splinePoint = spline[index];
                 var position = points[index];
-
                 splinePoint.position = position;
             }
         
             spline.AutoConstructSpline2();
-            spline.AutoCalculateNormals();
+            if (splineAutogenerateNormals)
+                spline.AutoCalculateNormals();
         }
     }
 }

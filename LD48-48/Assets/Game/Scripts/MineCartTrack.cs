@@ -8,5 +8,10 @@ namespace Game.Scripts
         public MeshFilter meshFilter;
         public MeshCollider meshCollider;
         public BezierSpline spline;
+
+        public void DisableCollisions()
+        {
+            meshCollider.enabled = false;
+        }
     }
 }
