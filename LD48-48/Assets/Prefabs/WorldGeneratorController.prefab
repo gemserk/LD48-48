@@ -48,22 +48,22 @@ MonoBehaviour:
   floorPrefabs:
   - {fileID: 8975798757828218513, guid: 38347aaf5190c47fab678a0358aa006c, type: 3}
   floorWidth: 20
-  floorMinDistance: 1
-  floorMaxDistance: 3
+  floorMinDistance: 5
+  floorMaxDistance: 10
   floorPrefabOffsetX: 0.77
   floorPrefabDistanceBetween: 1.55
   floorDeltaMovement: 0.5
-  floorSpawnChance: 0.3
+  floorSpawnChance: 0.25
   lightsDistanceBetween: 3
   lightPrefabs:
   - {fileID: 4496946856997334115, guid: 679747e939d564c2f902aa3dc0287e80, type: 3}
   - {fileID: 4496946856997334115, guid: 05b8e294473dd4895b17109a1c5da406, type: 3}
   - {fileID: 4496946856997334115, guid: ede93c71c8e2840d59fd36836df452c9, type: 3}
   lightOffsetY: 1
-  wallDistanceFromPathMin: 10
-  wallDistanceFromPathMax: 6
+  wallDistanceFromPathMin: 20
+  wallDistanceFromPathMax: 15
   wallDeltaMovement: 1
-  wallSpawnChance: 0.8
+  wallSpawnChance: 0.15
   wallPrefabs:
   - {fileID: 2964811313734450062, guid: 383b3ac15e76c492db252b51155f8888, type: 3}
   wallYPos: -50

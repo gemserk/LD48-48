@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2297016445584425593}
   - component: {fileID: 3854310447271420766}
   - component: {fileID: 6730775936366632275}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2064,7 +2064,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5691933668496558603}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: db050579fa78a8f47bed28922ed03374, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -2080,7 +2080,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6918162156036416491}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
