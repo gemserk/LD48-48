@@ -35,9 +35,19 @@ namespace Game.Scripts
             var points = trackGenerator.GeneratePoints(mineCartController.transform.position);
             
             CopyToSpline(mineTrack.spline, points);
-            meshGenerator.GenerateMesh(mineTrack);
+            
+            StartCoroutine(RegenerateMeshForever(mineTrack));
 
             yield return null;
+        }
+
+        private IEnumerator RegenerateMeshForever(MineCartTrack track)
+        {
+            while (true)
+            {
+                meshGenerator.GenerateMesh(track);
+                yield return null;
+            }
         }
 
         private void CopyToSpline(BezierSpline spline, IReadOnlyList<Vector3> points)
@@ -48,6 +58,7 @@ namespace Game.Scripts
                 var splinePoint = spline[index];
                 var position = points[index];
                 splinePoint.position = position;
+                splinePoint.normal = Vector3.up;
             }
         
             spline.AutoConstructSpline2();
