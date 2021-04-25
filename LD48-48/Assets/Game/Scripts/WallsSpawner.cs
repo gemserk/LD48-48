@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BezierSolution;
 using UnityEngine;
+using UnityTemplateProjects;
 
 public class WallsSpawner : MonoBehaviour
 {
@@ -27,9 +28,23 @@ public class WallsSpawner : MonoBehaviour
     public float wallSpawnChance;
     public List<GameObject> wallPrefabs;
     public float wallYPos;
-    
+
+    public float lightsDistanceBetween;
+    public List<GameObject> lightPrefabs;
+    public float lightOffsetY;
+    private float lightLastSpawnDistance = 0;
+
+    public bool autoGenerate = true;
 
     public void Awake()
+    {
+        if (autoGenerate)
+        {
+            Generate();
+        }
+    }
+
+    public void Generate()
     {
         GenerateFloor();
         GenerateWalls();
@@ -42,11 +57,15 @@ public class WallsSpawner : MonoBehaviour
         
         float normalizedT = 0;
         int iteration = 0;
+        float cummulativeDistance = 0;
+        int cantFloorPrefabs = Mathf.RoundToInt(floorWidth / floorPrefabDistanceBetween);
+
+        List<GameObject> newFloors = new List<GameObject>(cantFloorPrefabs);
+        
         while (normalizedT < 1)
         {
+            newFloors.Clear();
             Vector3 splinePos = spline.MoveAlongSpline(ref normalizedT, floorDeltaMovement);
-
-            int cantFloorPrefabs = Mathf.RoundToInt(floorWidth / floorPrefabDistanceBetween);
 
             var startX = splinePos.x - floorWidth / 2f;
             var zPos = splinePos.z;
@@ -56,11 +75,24 @@ public class WallsSpawner : MonoBehaviour
                 {
                     var xPos = startX + floorPrefabDistanceBetween * i + (floorPrefabOffsetX * iteration);
                     float yPos = splinePos.y + (-UnityEngine.Random.Range(floorMinDistance, floorMaxDistance));
-                    GameObject.Instantiate(floorPrefabs[0], new Vector3(xPos, yPos, zPos), Quaternion.identity);
+                    var newFloor = GameObject.Instantiate(floorPrefabs.RandomItem(), new Vector3(xPos, yPos, zPos), Quaternion.identity);
+
+                    newFloors.Add(newFloor);
                 }
+            }
+            
+            if ((cummulativeDistance - lightLastSpawnDistance) > lightsDistanceBetween && lightPrefabs.Count > 0 && newFloors.Count > 0)
+            {
+                var floor = newFloors.RandomItem();
+                var floorPos = floor.transform.position;
+
+                var lightPrefab = lightPrefabs.RandomItem();
+                GameObject.Instantiate(lightPrefab, new Vector3(floorPos.x, floorPos.y + lightOffsetY, floorPos.z), Quaternion.identity);
+                lightLastSpawnDistance = cummulativeDistance;
             }
 
             iteration = (iteration + 1) % 2;
+            cummulativeDistance += floorDeltaMovement;
         }
     }
     
@@ -83,7 +115,7 @@ public class WallsSpawner : MonoBehaviour
                     var xPos = splinePos.x + distanceFromPath * wallMultiplier;
                     var zPos = splinePos.z;
                     var yPos = splinePos.y + wallYPos;
-                    GameObject.Instantiate(wallPrefabs[0], new Vector3(xPos, yPos, zPos), Quaternion.identity);
+                    GameObject.Instantiate(wallPrefabs.RandomItem(), new Vector3(xPos, yPos, zPos), Quaternion.identity);
                 }
             }
         }
