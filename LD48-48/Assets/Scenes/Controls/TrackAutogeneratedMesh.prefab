@@ -152,11 +152,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bezier: {fileID: 0}
-  lineRenderer: {fileID: 1304331158810074022}
   meshFilter: {fileID: 1304331158810074020}
   meshCollider: {fileID: 1304331158810074021}
-  multiplyPoints: 10
-  offset: {x: 0, y: -0.25, z: 0}
+  trackMeshGenerator: {fileID: 307477454359265345, guid: 016ee1d7cbca6e944a290934ab6787b6, type: 3}
 --- !u!23 &1304331158810074023
 MeshRenderer:
   m_ObjectHideFlags: 0
