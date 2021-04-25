@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7614521876617730630}
   - component: {fileID: 7614521876617730633}
   - component: {fileID: 7614521876617730632}
-  - component: {fileID: 7614521876617730635}
+  - component: {fileID: 3936960659326854848}
   m_Layer: 7
   m_Name: MineCart
   m_TagString: Untagged
@@ -324,8 +324,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7614521876617730637}
   m_Mesh: {fileID: 0}
---- !u!64 &7614521876617730635
-MeshCollider:
+--- !u!135 &3936960659326854848
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -334,10 +334,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: -0.00000035762787, y: 0.5, z: -0.000000014901161}
 --- !u!1001 &1722958813342981994
 PrefabInstance:
   m_ObjectHideFlags: 0

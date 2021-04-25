@@ -294,19 +294,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4822543804802527256, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
       propertyPath: maxOffsetTrack.y
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4822543804802527256, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
       propertyPath: maxOffsetTrack.z
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4822543804802527256, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
       propertyPath: minOffsetTrack.y
-      value: -3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4822543804802527256, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
       propertyPath: minOffsetTrack.z
-      value: -5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4822543804802527256, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
       propertyPath: mineCartController
@@ -314,7 +314,7 @@ PrefabInstance:
       objectReference: {fileID: 1265867532}
     - target: {fileID: 4822543804802527257, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
       propertyPath: descentPerStep
-      value: -5
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4822543804802527258, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
       propertyPath: m_Name

@@ -156,27 +156,40 @@ namespace Game.Scripts
             }
         }
 
-        public float minRandomForceOnCollision = 100.0f;
-        public float maxRandomForceOnCollision = 200.0f;
-        
-        public float minRandomTorqueOnCollision = 100.0f;
-        public float maxRandomTorqueOnCollision = 200.0f;
+        // public float minRandomForceOnCollision = 100.0f;
+        // public float maxRandomForceOnCollision = 200.0f;
+        //
+        // public float minRandomTorqueOnCollision = 100.0f;
+        // public float maxRandomTorqueOnCollision = 200.0f;
         
         private void ReleaseControls()
         {
+            if (attached)
+            {
+                var forwardVelocity = transform.forward.normalized * bezierWalker.speed * controlsAsset.jumpForwardSpeedFactor;
+                // var verticalVelocity = Vector3.up * controlsAsset.jumpUpVelocityFactor;
+                // var tiltVelocity = tiltVector.x * transform.right * controlsAsset.jumpTiltVelocityFactor;
+                    
+                // initial velocity while starting jump
+                rigidBody.isKinematic = false;
+                rigidBody.velocity = forwardVelocity;
+            }
+
+            
             DettachFromTrack();
             controlsEnabled = false;
             
             rigidBody.isKinematic = false;
             rigidBody.detectCollisions = true;
-            rigidBody.constraints = RigidbodyConstraints.None;
+
+            // rigidBody.constraints = RigidbodyConstraints.None;
 
             var direction = Mathf.Sign(UnityEngine.Random.Range(-1.0f, 1.0f));
 
             var lateralForce = transform.right * direction;
-            
-            rigidBody.AddForce(lateralForce * UnityEngine.Random.Range(minRandomForceOnCollision, maxRandomForceOnCollision), ForceMode.Impulse);
-            rigidBody.AddRelativeTorque(lateralForce * UnityEngine.Random.Range(minRandomTorqueOnCollision, maxRandomTorqueOnCollision), ForceMode.Impulse);
+
+            // rigidBody.AddForce(lateralForce * UnityEngine.Random.Range(minRandomForceOnCollision, maxRandomForceOnCollision), ForceMode.Impulse);
+            // rigidBody.AddRelativeTorque(lateralForce * UnityEngine.Random.Range(minRandomTorqueOnCollision, maxRandomTorqueOnCollision), ForceMode.Impulse);
             
             // apply force in random direction?
         }
