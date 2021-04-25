@@ -27,6 +27,11 @@ namespace Game.Scripts
             return meshGenerator.GenerateMesh(spline, meshFilter, meshCollider);
         }
 
+        public Mesh GenerateMesh(MineCartTrack track)
+        {
+            return GenerateMesh(track.spline, track.meshFilter, track.meshCollider);
+        }
+
         public Mesh GenerateMesh(BezierSpline spline, MeshFilter meshFilter, MeshCollider meshCollider)
         {
             var count = spline.Count;

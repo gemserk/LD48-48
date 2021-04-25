@@ -1,5 +1,3 @@
-
-using System;
 using BezierSolution;
 using UnityEngine;
 
@@ -9,12 +7,10 @@ public class RandomTrackController : MonoBehaviour
     public WallsSpawner wallsSpawner;
 
     public GameObject trackPrefab;
-    
-    
 
     private void Awake()
     {
-        BezierSpline spline = wallsSpawner.spline;
+        var spline = wallsSpawner.spline;
         var points = trackRandomGenerator.GeneratePoints(spline.transform.position);
         spline.Initialize(points.Count);
         for (var index = 0; index < spline.Count; index++)
@@ -26,6 +22,7 @@ public class RandomTrackController : MonoBehaviour
         }
         
         spline.AutoConstructSpline2();
+        // spline.AutoCalculateNormals();
         
         wallsSpawner.Generate();
     }

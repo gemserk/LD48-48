@@ -13,10 +13,10 @@ public class TrackRandomGenerator : MonoBehaviour
 
     public List<Vector3> GeneratePoints(Vector3 from)
     {
-        List<Vector3> points = new List<Vector3>();
+        var points = new List<Vector3>();
         points.Add(from);
 
-        for (int i = 0; i < steps; i++)
+        for (var i = 0; i < steps; i++)
         {
             var lastPoint = points[i];
             var newPoint = lastPoint + new Vector3(0, descentPerStep, UnityEngine.Random.Range(stepDistanceMin, stepDistanceMax));
