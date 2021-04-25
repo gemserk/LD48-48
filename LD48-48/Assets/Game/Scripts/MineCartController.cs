@@ -213,8 +213,17 @@ namespace Game.Scripts
                 // localEulerAngles.x = -tiltAngle;
                 // modelTransform.localEulerAngles = localEulerAngles;
 
-                var moveForceDirection = transform.right * tiltVector.x;
-                rigidBody.AddForce(moveForceDirection * controlsAsset.moveWhileJumpForceFactor * Time.deltaTime, ForceMode.Force);
+                var tiltWhileJumpingDirection = transform.right * tiltVector.x;
+                
+                rigidBody.AddForce(tiltWhileJumpingDirection * controlsAsset.moveWhileJumpForceFactor * Time.deltaTime, ForceMode.Force);
+                
+                if (tiltVector.y > 0)
+                {
+                    var forwardWhileJumpingDirection = transform.forward * tiltVector.y;
+                    rigidBody.AddForce(
+                        forwardWhileJumpingDirection * controlsAsset.moveWhileJumpForceFactor * Time.deltaTime,
+                        ForceMode.Force);
+                }
             }
 
             // if (jumpActionRef.action.triggered)
