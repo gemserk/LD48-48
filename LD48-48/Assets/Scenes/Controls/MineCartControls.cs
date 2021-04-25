@@ -31,6 +31,7 @@ namespace Scenes.Controls
 
         public float jumpForwardSpeedFactor = 0.5f;
         public float jumpUpVelocityFactor = 1.0f;
+        public float jumpTiltVelocityFactor = 5.0f;
 
         public float timeToActivateRigidBody = 0.25f;
         
@@ -134,9 +135,11 @@ namespace Scenes.Controls
 
                     var forwardVelocity = transform.forward.normalized * bezierWalker.speed * jumpForwardSpeedFactor;
                     var verticalVelocity = Vector3.up * jumpUpVelocityFactor;
+
+                    var tiltVelocity = tiltVector.x * transform.right * jumpTiltVelocityFactor;
                     
                     // initial velocity while starting jump
-                    rigidBody.velocity = forwardVelocity + verticalVelocity;
+                    rigidBody.velocity = forwardVelocity + verticalVelocity + tiltVelocity;
                 }
                 
                 if (currentJumpDuration > 0)
