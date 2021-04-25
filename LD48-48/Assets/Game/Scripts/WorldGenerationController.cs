@@ -48,12 +48,6 @@ namespace Game.Scripts
             
             CopyToSpline(masterSpline, points);
 
-            var mineTrackObject = Instantiate(mineTrackPrefab);
-            var mineTrack = mineTrackObject.GetComponent<MineCartTrack>();
-
-            mineTrack.trackMeshGenerator = meshGenerator;
-            mineTrack.regenerateMeshOnLateUpdate = true;
-            
             CreateMineTrack(new Vector3(-3, 0, 0));
             CreateMineTrack(new Vector3(0, 0, 0));
             CreateMineTrack(new Vector3(3, 0, 0));
