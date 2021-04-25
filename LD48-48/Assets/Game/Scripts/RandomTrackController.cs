@@ -24,6 +24,6 @@ public class RandomTrackController : MonoBehaviour
         spline.AutoConstructSpline2();
         // spline.AutoCalculateNormals();
         
-        wallsSpawner.Generate();
+       // wallsSpawner.Generate();
     }
 }
