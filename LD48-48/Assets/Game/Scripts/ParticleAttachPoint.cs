@@ -6,11 +6,13 @@ namespace Game.Scripts
     {
         public GameObject particleSystemPrefab;
 
+        // public bool asChild = true;
+
         public void Spawn()
         {
             if (particleSystemPrefab != null)
             {
-                Instantiate(particleSystemPrefab, transform.position, Quaternion.identity);
+                Instantiate(particleSystemPrefab, transform);
             }
         }
     }

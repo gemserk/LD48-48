@@ -166,9 +166,10 @@ namespace Game.Scripts
 
                 // Debug.Log($"{t}, {bezierWalker.speed}, {forwardAngle}, {speedMultiplier}");
                 
-                // TODO: tilt a bit in forward/backward direction given this multiplier
+                localEulerAngles = modelTransform.localEulerAngles;
+                localEulerAngles.x = tiltVector.y * controlsAsset.forwardTiltAngle;
+                modelTransform.localEulerAngles = localEulerAngles;
 
-                
             } else 
             {
                 if (currentTimeToActivateRigidBody < 0)

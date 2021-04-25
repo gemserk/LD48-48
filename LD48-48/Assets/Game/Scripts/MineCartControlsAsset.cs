@@ -7,6 +7,8 @@ namespace Game.Scripts
     public class MineCartControlsAsset : ScriptableObject
     {
         public float tiltAngle = 15.0f;
+        public float forwardTiltAngle = 10.0f;
+        
         public float jumpTiltXAngle = 25.0f;
 
         public float jumpStartTreshold = 0.1f;
