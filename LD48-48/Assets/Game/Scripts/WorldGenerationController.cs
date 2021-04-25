@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using BezierSolution;
@@ -21,6 +22,9 @@ namespace Game.Scripts
         private TrackMeshGenerator meshGenerator;
 
         private BezierSpline masterSpline;
+
+        public int minSegmentLength = 100;
+        public int maxSegmentLength = 100;
 
         private void Start()
         {
@@ -50,9 +54,11 @@ namespace Game.Scripts
             mineTrack.trackMeshGenerator = meshGenerator;
             mineTrack.regenerateMeshOnLateUpdate = true;
             
-            CopySplineSegment(masterSpline, mineTrack.spline, 0, 20, Vector3.zero);
-            
-            // StartCoroutine(RegenerateMeshForever(mineTrack));
+            CreateMineTrack(new Vector3(-3, 0, 0));
+            CreateMineTrack(new Vector3(0, 0, 0));
+            CreateMineTrack(new Vector3(3, 0, 0));
+
+            // CopySplineSegment(masterSpline, mineTrack.spline, 0, 20, Vector3.zero);
 
             yield return null;    
             
@@ -66,18 +72,21 @@ namespace Game.Scripts
             //
             //     yield return null;    
             // }
-            
         }
 
-        // private IEnumerator RegenerateMeshForever(MineCartTrack track)
-        // {
-        //     while (true)
-        //     {
-        //         meshGenerator.GenerateMesh(track);
-        //         yield return null;
-        //     }
-        // }
-        
+        private void CreateMineTrack(Vector3 offset)
+        {
+            var mineTrackObject = Instantiate(mineTrackPrefab);
+            var mineTrack = mineTrackObject.GetComponent<MineCartTrack>();
+
+            mineTrack.trackMeshGenerator = meshGenerator;
+            mineTrack.regenerateMeshOnLateUpdate = true;
+
+            var segmentLength = UnityEngine.Random.Range(minSegmentLength, maxSegmentLength);
+            
+            CopySplineSegment(masterSpline, mineTrack.spline, 0, segmentLength, offset);
+        }
+
         private static void CopySplineSegment(BezierSpline sourceSpline, BezierSpline targetSpline, int start, int end, Vector3 offset)
         {
             var count = end - start;
