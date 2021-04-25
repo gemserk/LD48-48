@@ -140,6 +140,6 @@ LineRenderer:
     alignment: 0
     textureMode: 0
     shadowBias: 0
-    generateLightingData: 0
+    generateLightingData: 1
   m_UseWorldSpace: 1
   m_Loop: 0
