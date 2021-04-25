@@ -182,8 +182,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213877975}
-  m_LocalRotation: {x: 0.08772228, y: 0.0000000037502548, z: -3.3025407e-10, w: 0.996145}
-  m_LocalPosition: {x: -0.00000007413654, y: 3.7476823, z: -13.846096}
+  m_LocalRotation: {x: 0.08772228, y: -0.0000000037502623, z: 3.302547e-10, w: 0.996145}
+  m_LocalPosition: {x: 0.00000007413669, y: 3.7476823, z: -13.846096}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1803047294}
@@ -300,8 +300,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903285494}
-  m_LocalRotation: {x: 0.08772228, y: 0.0000000037502548, z: -3.3025407e-10, w: 0.996145}
-  m_LocalPosition: {x: -0.00000007413654, y: 3.7476823, z: -13.846096}
+  m_LocalRotation: {x: 0.08772228, y: -0.0000000037502623, z: 3.302547e-10, w: 0.996145}
+  m_LocalPosition: {x: 0.00000007413669, y: 3.7476823, z: -13.846096}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1976230761}
@@ -949,6 +949,10 @@ PrefabInstance:
       propertyPath: mineCartController
       value: 
       objectReference: {fileID: 1265867532}
+    - target: {fileID: 4822543804802527257, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
+      propertyPath: steps
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4822543804802527258, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
       propertyPath: m_Name
       value: ~WorldGeneratorController

@@ -20,8 +20,19 @@ namespace Game.Scripts
 
         private TrackMeshGenerator meshGenerator;
 
+        private BezierSpline masterSpline;
+
         private void Start()
         {
+            var masterSplineObject = new GameObject("~MasterSpline")
+            {
+                hideFlags = HideFlags.HideInHierarchy
+            };
+            
+            masterSpline = masterSplineObject.AddComponent<BezierSpline>();
+            masterSpline.loop = false;
+            masterSpline.drawGizmos = false;
+            
             meshGenerator = mineTrackMeshGenerator.GetComponent<TrackMeshGenerator>();
             mineCartController.DettachFromTrack();
             StartCoroutine(WorldGenerationOverTime());
@@ -29,25 +40,64 @@ namespace Game.Scripts
 
         private IEnumerator WorldGenerationOverTime()
         {
+            var points = trackGenerator.GeneratePoints(mineCartController.transform.position);
+            
+            CopyToSpline(masterSpline, points);
+
             var mineTrackObject = Instantiate(mineTrackPrefab);
             var mineTrack = mineTrackObject.GetComponent<MineCartTrack>();
 
-            var points = trackGenerator.GeneratePoints(mineCartController.transform.position);
+            mineTrack.trackMeshGenerator = meshGenerator;
+            mineTrack.regenerateMeshOnLateUpdate = true;
             
-            CopyToSpline(mineTrack.spline, points);
+            CopySplineSegment(masterSpline, mineTrack.spline, 0, 20, Vector3.zero);
             
-            StartCoroutine(RegenerateMeshForever(mineTrack));
+            // StartCoroutine(RegenerateMeshForever(mineTrack));
 
-            yield return null;
+            yield return null;    
+            
+            // while (true) 
+            // {
+            //     // if we have to regenerate, generate one, copy from main spline
+            //     var mineTrackObject = Instantiate(mineTrackPrefab);
+            //     var mineTrack = mineTrackObject.GetComponent<MineCartTrack>();
+            //
+            //     StartCoroutine(RegenerateMeshForever(mineTrack));
+            //
+            //     yield return null;    
+            // }
+            
         }
 
-        private IEnumerator RegenerateMeshForever(MineCartTrack track)
+        // private IEnumerator RegenerateMeshForever(MineCartTrack track)
+        // {
+        //     while (true)
+        //     {
+        //         meshGenerator.GenerateMesh(track);
+        //         yield return null;
+        //     }
+        // }
+        
+        private static void CopySplineSegment(BezierSpline sourceSpline, BezierSpline targetSpline, int start, int end, Vector3 offset)
         {
-            while (true)
+            var count = end - start;
+            targetSpline.Initialize(count);
+            for (var i = start; i < end; i++)
             {
-                meshGenerator.GenerateMesh(track);
-                yield return null;
+                if (i > sourceSpline.Count)
+                    break;
+                
+                var targetPoint = targetSpline[i - start];
+                var sourcePoint = sourceSpline[i];
+
+                targetPoint.position = sourcePoint.position + offset;
+                targetPoint.normal = sourcePoint.normal;
+                targetPoint.localRotation = Quaternion.identity;
+                
+                // apply noise + offset
             }
+            
+            // targetSpline.AutoConstructSpline2();
         }
 
         private void CopyToSpline(BezierSpline spline, IReadOnlyList<Vector3> points)

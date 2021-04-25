@@ -9,9 +9,21 @@ namespace Game.Scripts
         public MeshCollider meshCollider;
         public BezierSpline spline;
 
+        public bool regenerateMeshOnLateUpdate = true;
+        
+        public TrackMeshGenerator trackMeshGenerator;
+
         public void DisableCollisions()
         {
             meshCollider.enabled = false;
+        }
+
+        private void LateUpdate()
+        {
+            if (trackMeshGenerator != null && regenerateMeshOnLateUpdate)
+            {
+                trackMeshGenerator.GenerateMesh(this);
+            }
         }
     }
 }
