@@ -84,7 +84,7 @@ namespace Game.Scripts
             float normalizedT;
             
             var bezierPosition =
-                mineCartTrack.spline.FindNearestPointTo(transform.position, out normalizedT);
+                mineCartTrack.spline.FindNearestPointTo(transform.position, out normalizedT, 10000.0f);
         
             transform.position = bezierPosition;
             bezierWalker.NormalizedT = normalizedT;
