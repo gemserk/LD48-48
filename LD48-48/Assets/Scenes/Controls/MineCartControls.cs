@@ -1,4 +1,4 @@
-using BezierSolution;
+using Game.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +8,7 @@ namespace Scenes.Controls
     {
         public MineCartControlsAsset controlsAsset;
         
-        public BezierWalkerWithSpeed bezierWalker;
+        public BezierWalkerWithSpeedFixedUpdate bezierWalker;
 
         public Transform modelTransform;
         public Rigidbody rigidBody;
@@ -28,6 +28,11 @@ namespace Scenes.Controls
             rigidBody.isKinematic = true;
             if (controlsAsset.overrideRigidBodyMass > 0)
                 rigidBody.mass = controlsAsset.overrideRigidBodyMass;
+
+            if (bezierWalker == null)
+            {
+                bezierWalker = GetComponent<BezierWalkerWithSpeedFixedUpdate>();
+            }
         }
 
         private void AttachToTrack(GameObject track)

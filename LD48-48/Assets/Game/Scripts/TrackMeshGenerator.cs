@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Scripts
 {
-    public class TrackMeshGenerator : MonoBehaviour
+	public class TrackMeshGenerator : MonoBehaviour
     {
         // Used to generate the mesh
         
