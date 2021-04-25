@@ -1,11 +1,10 @@
-using System;
 using Game.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Scenes.Controls
 {
-    public class MineCartControls : MonoBehaviour
+    public class MineCartController : MonoBehaviour
     {
         public MineCartControlsAsset controlsAsset;
         
@@ -23,6 +22,8 @@ namespace Scenes.Controls
         private float currentTimeToActivateRigidBody;
 
         private bool waitingForColliderReattach;
+        
+        public ParticleAttachPoint attachToTrackParticle;
         
         private void Start()
         {
@@ -55,6 +56,11 @@ namespace Scenes.Controls
             rigidBody.isKinematic = true;
 
             waitingForColliderReattach = false;
+
+            if (attachToTrackParticle != null)
+            {
+                attachToTrackParticle.Spawn();
+            }
         }
 
         private void OnCollisionEnter(Collision other)

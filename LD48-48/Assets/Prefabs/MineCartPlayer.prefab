@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4618525338608583720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6568573740519691236}
+  - component: {fileID: 1575235185266300323}
+  m_Layer: 0
+  m_Name: AttachPoint_AttachToTrack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6568573740519691236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4618525338608583720}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 1, z: 0}
+  m_Children: []
+  m_Father: {fileID: 6539906006148726175}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1575235185266300323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4618525338608583720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d43b0de0db4478a801fcb64fe5a2aca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystemPrefab: {fileID: 8877758959221583192, guid: b6a13057034124a4bb79525e835c136a, type: 3}
 --- !u!1 &6539906006071299395
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,6 +171,7 @@ Transform:
   - {fileID: 6539906006669464095}
   - {fileID: 6539906006753793279}
   - {fileID: 6539906006071299394}
+  - {fileID: 6568573740519691236}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -169,6 +214,7 @@ MonoBehaviour:
   rigidBody: {fileID: 6539906006148726173}
   tiltActionRef: {fileID: -515805540173997014, guid: 5d18670741e6d5542986cf88132d6d14, type: 3}
   jumpActionRef: {fileID: -2605949509075620080, guid: 5d18670741e6d5542986cf88132d6d14, type: 3}
+  attachToTrackParticle: {fileID: 1575235185266300323}
 --- !u!54 &6539906006148726173
 Rigidbody:
   m_ObjectHideFlags: 0
