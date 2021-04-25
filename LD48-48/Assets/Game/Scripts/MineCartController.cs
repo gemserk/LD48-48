@@ -27,6 +27,8 @@ namespace Game.Scripts
         private MineCartTrack currentMineCartTrack;
 
         private bool controlsEnabled = true;
+
+        public ParticleSystem attachedParticleSystem;
         
         private void Start()
         {
@@ -198,6 +200,23 @@ namespace Game.Scripts
         {
             if (!controlsEnabled)
                 return;
+
+            if (attachedParticleSystem != null)
+            {
+                // var emission = attachedParticleSystem.emission;
+                // emission.enabled = attached;
+
+
+                if (attachedParticleSystem.isPlaying && !attached)
+                {
+                    attachedParticleSystem.Stop(true);
+                } else if (attachedParticleSystem.isStopped && attached)
+                {
+                    attachedParticleSystem.Play(true);
+                }
+
+                // attachedParticleSystem.emission = emission;
+            }
             
             var tiltVector = tiltActionRef.action.ReadValue<Vector2>();
             var jumpValue = jumpActionRef.action.ReadValue<float>();
