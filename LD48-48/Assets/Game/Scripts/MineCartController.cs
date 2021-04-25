@@ -1,8 +1,7 @@
-using Game.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Scenes.Controls
+namespace Game.Scripts
 {
     public class MineCartController : MonoBehaviour
     {
@@ -157,11 +156,19 @@ namespace Scenes.Controls
                     forwardAngle -= 360;
                 }
                 var t = (forwardAngle + 90.0f) / 180.0f;
-
-                bezierWalker.speed = Mathf.Lerp(controlsAsset.minTravelSpeed, controlsAsset.maxTravelSpeed, t);
                 
-                // Debug.Log($"{t}, {bezierWalker.speed}, {forwardAngle}");
+                var speedUpFactor = (tiltVector.y + 1.0f) * 0.5f;
+                var speedMultiplier = Mathf.Lerp(controlsAsset.tiltMinTravelSpeedMultiplier, 
+                    controlsAsset.tiltMaxTravelSpeedMultiplier, speedUpFactor);
+                
+                bezierWalker.speed = Mathf.Lerp(controlsAsset.slopeMinTravelSpeed, controlsAsset.slopeMaxTravelSpeed, t) 
+                                     * speedMultiplier;
 
+                // Debug.Log($"{t}, {bezierWalker.speed}, {forwardAngle}, {speedMultiplier}");
+                
+                // TODO: tilt a bit in forward/backward direction given this multiplier
+
+                
             } else 
             {
                 if (currentTimeToActivateRigidBody < 0)
@@ -170,9 +177,9 @@ namespace Scenes.Controls
                     // triggerCollider.enabled = true;
                 }
 
-                var playerEuler = transform.localEulerAngles;
-                playerEuler.x = 0;
-                transform.localEulerAngles = playerEuler;
+                // var playerEuler = transform.localEulerAngles;
+                // playerEuler.x = 0;
+                // transform.localEulerAngles = playerEuler;
                 
                 // localEulerAngles = modelTransform.localEulerAngles;
                 // localEulerAngles.x = -tiltAngle;

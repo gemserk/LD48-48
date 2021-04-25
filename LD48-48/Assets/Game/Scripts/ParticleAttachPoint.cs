@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Scenes.Controls
+namespace Game.Scripts
 {
     public class ParticleAttachPoint : MonoBehaviour
     {

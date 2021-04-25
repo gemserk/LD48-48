@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace Scenes.Controls
+namespace Game.Scripts
 {
     [CreateAssetMenu(menuName = "MineCartControls")]
     public class MineCartControlsAsset : ScriptableObject
@@ -25,8 +26,14 @@ namespace Scenes.Controls
         
         public float overrideRigidBodyMass = 5.0f;
 
-        public float minTravelSpeed = 5.0f;
-        public float maxTravelSpeed = 30.0f;
+        [FormerlySerializedAs("minTravelSpeed")] 
+        public float slopeMinTravelSpeed = 5.0f;
+        
+        [FormerlySerializedAs("maxTravelSpeed")] 
+        public float slopeMaxTravelSpeed = 30.0f;
+        
+        public float tiltMinTravelSpeedMultiplier = 0.5f;
+        public float tiltMaxTravelSpeedMultiplier = 1.5f;
      
         // public AnimationCurve trackTravelSpeed;
     }

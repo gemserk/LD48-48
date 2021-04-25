@@ -1,8 +1,7 @@
 using BezierSolution;
-using Game.Scripts;
 using UnityEngine;
 
-namespace Scenes.Controls
+namespace Game.Scripts
 {
     [ExecuteInEditMode]
     public class CopyToLineRenderer : MonoBehaviour
