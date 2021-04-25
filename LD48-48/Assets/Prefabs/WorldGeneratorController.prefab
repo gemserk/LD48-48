@@ -48,8 +48,8 @@ MonoBehaviour:
   floorPrefabs:
   - {fileID: 8975798757828218513, guid: 38347aaf5190c47fab678a0358aa006c, type: 3}
   floorWidth: 20
-  floorMinDistance: 5
-  floorMaxDistance: 10
+  floorMinDistance: 10
+  floorMaxDistance: 15
   floorPrefabOffsetX: 0.77
   floorPrefabDistanceBetween: 1.55
   floorDeltaMovement: 0.5
@@ -69,6 +69,7 @@ MonoBehaviour:
   wallYPos: -50
   autoGenerate: 0
   generateUntil: 0
+  cleanBehind: 0
 --- !u!114 &4310149073402554711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,6 +85,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   mainSpline: {fileID: 0}
   wallsSpawner: {fileID: 2439387777865704239}
+  camera: {fileID: 0}
   lookAhead: 50
   cleanBehind: 0
 --- !u!1 &4822543804802527258

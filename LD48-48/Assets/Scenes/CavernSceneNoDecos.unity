@@ -594,6 +594,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MineCartPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 6539906006148726172, guid: 541e5b850b1d9184db90bffcf8a21bef, type: 3}
+      propertyPath: maxRandomForceOnCollision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539906006148726172, guid: 541e5b850b1d9184db90bffcf8a21bef, type: 3}
+      propertyPath: minRandomForceOnCollision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539906006148726172, guid: 541e5b850b1d9184db90bffcf8a21bef, type: 3}
+      propertyPath: maxRandomTorqueOnCollision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539906006148726172, guid: 541e5b850b1d9184db90bffcf8a21bef, type: 3}
+      propertyPath: minRandomTorqueOnCollision
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6539906006148726175, guid: 541e5b850b1d9184db90bffcf8a21bef, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1076,7 +1092,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2439387777865704239, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
       propertyPath: wallSpawnChance
-      value: 0
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
       propertyPath: camera
