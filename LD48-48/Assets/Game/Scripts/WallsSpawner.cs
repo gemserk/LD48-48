@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using BezierSolution;
 using UnityEngine;
 using UnityTemplateProjects;
@@ -42,6 +43,12 @@ public class WallsSpawner : MonoBehaviour
     public bool autoGenerate = true;
     
     public float generateUntil;
+    public float cleanBehind;
+
+    private List<Transform> spawnedGos = new List<Transform>();
+
+    private Dictionary<GameObject, List<GameObject>> activeGOs = new Dictionary<GameObject, List<GameObject>>();
+    private Dictionary<GameObject, List<GameObject>> freeGOs = new Dictionary<GameObject, List<GameObject>>();
 
     public void Awake()
     {
@@ -61,6 +68,7 @@ public class WallsSpawner : MonoBehaviour
         
         GenerateFloor();
         GenerateWalls();
+        CleanBehind();
     }
 
     private void GenerateFloor()
@@ -89,8 +97,8 @@ public class WallsSpawner : MonoBehaviour
                 {
                     var xPos = startX + floorPrefabDistanceBetween * i + (floorPrefabOffsetX * floorIteration);
                     float yPos = splinePos.y + (-UnityEngine.Random.Range(floorMinDistance, floorMaxDistance));
-                    var newFloor = GameObject.Instantiate(floorPrefabs.RandomItem(), new Vector3(xPos, yPos, zPos), Quaternion.identity);
-
+                    var prefab = floorPrefabs.RandomItem();
+                    var newFloor = Spawned(prefab, new Vector3(xPos, yPos, zPos), Quaternion.identity);
                     newFloors.Add(newFloor);
                 }
             }
@@ -101,7 +109,7 @@ public class WallsSpawner : MonoBehaviour
                 var floorPos = floor.transform.position;
 
                 var lightPrefab = lightPrefabs.RandomItem();
-                GameObject.Instantiate(lightPrefab, new Vector3(floorPos.x, floorPos.y + lightOffsetY, floorPos.z), Quaternion.identity);
+                Spawned(lightPrefab, new Vector3(floorPos.x, floorPos.y + lightOffsetY, floorPos.z), Quaternion.identity);
                 lightLastSpawnDistance = floorCummulativeDistance;
             }
 
@@ -132,11 +140,71 @@ public class WallsSpawner : MonoBehaviour
                     var xPos = splinePos.x + distanceFromPath * wallMultiplier;
                     var zPos = splinePos.z;
                     var yPos = splinePos.y + wallYPos;
-                    GameObject.Instantiate(wallPrefabs.RandomItem(), new Vector3(xPos, yPos, zPos), Quaternion.identity);
+                    var prefab = wallPrefabs.RandomItem();
+                    Spawned(prefab, new Vector3(xPos, yPos, zPos), Quaternion.identity);
                 }
             }
 
             wallCummulativeDistance = +wallDeltaMovement;
+        }
+    }
+
+    private GameObject Spawned(GameObject prefab, Vector3 position, Quaternion rotation)
+    {
+        var freeGOs = GetOrNew(this.freeGOs, prefab);
+        var usedGOs = GetOrNew(activeGOs, prefab);
+
+        GameObject go = null;
+        
+        if (freeGOs.Count > 0)
+        {
+            var index = freeGOs.Count - 1;
+            go = freeGOs[index];
+            go.transform.SetPositionAndRotation(position, rotation);
+            freeGOs.RemoveAt(index);
+        }
+        else
+        {
+            go = GameObject.Instantiate(prefab, position, rotation);
+        }
+        
+        usedGOs.Add(go);
+        return go;
+    }
+
+    private List<GameObject> GetOrNew(Dictionary<GameObject, List<GameObject>> dictionary, GameObject prefab)
+    {
+        List<GameObject> gos = null;
+        if (!dictionary.TryGetValue(prefab, out gos))
+        {
+            gos = new List<GameObject>();
+            dictionary[prefab] = gos;
+        }
+
+        return gos;
+    }
+
+    private void CleanBehind()
+    {
+        foreach (var activeGOsKV in activeGOs)
+        {
+            var activeGOList = activeGOsKV.Value;
+            var freeGOList = GetOrNew(freeGOs, activeGOsKV.Key);
+
+            for (int i = 0; i < activeGOList.Count;)
+            {
+                var go = activeGOList[i];
+                var transform = go.transform;
+                if (transform.localPosition.z < cleanBehind)
+                {
+                    activeGOList.RemoveAsBagWithIndex(i);
+                    freeGOList.Add(go);
+                }
+                else
+                {
+                    i++;
+                }
+            }
         }
     }
 }

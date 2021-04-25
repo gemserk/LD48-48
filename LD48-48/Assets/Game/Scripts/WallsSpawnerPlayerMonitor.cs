@@ -8,6 +8,7 @@ namespace Game.Scripts
         public MineCartController controller;
         public BezierSpline mainSpline;
         public WallsSpawner wallsSpawner;
+        public Camera camera;
 
         public float lookAhead;
         public float cleanBehind;
@@ -21,6 +22,7 @@ namespace Game.Scripts
             var currentLength = mainSpline.GetLengthApproximately(0, normalizedT);
             var generateUntil = currentLength + lookAhead;
             wallsSpawner.generateUntil = generateUntil;
+            wallsSpawner.cleanBehind = camera.transform.position.z - cleanBehind;
         }
     }
 }
