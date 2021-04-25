@@ -104,22 +104,30 @@ namespace Game.Scripts
 
         private void OnCollisionEnter(Collision other)
         {
+            if (!controlsEnabled)
+                return;
+            
             var collider = other.collider;
             if (collider != null)
             {
-                // var obstacle = other.gameObject.GetComponentInParent<MineObstacle>();
-                // if (obstacle != null)
-                // {
-                //     var contact = other.GetContact(0);
-                //     rigidBody.AddRelativeForce(contact.normal * 100f, ForceMode.Impulse);
-                //     return;
-                // }
+                var obstacle = other.gameObject.GetComponentInParent<MineObstacle>();
+                if (obstacle != null)
+                {
+                    // var contact = other.GetContact(0);
+                    // rigidBody.AddRelativeForce(contact.normal * 100f, ForceMode.Impulse);
+                    ReleaseControls();
+                    return;
+                }
+                
                 AttachToTrack(collider.gameObject);
             }
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            if (!controlsEnabled)
+                return;
+            
             // Debug.Log($"OnTriggerEnter: {other.gameObject.name}");
             
             var obstacle = other.gameObject.GetComponentInParent<MineObstacle>();
@@ -138,6 +146,8 @@ namespace Game.Scripts
         private void OnTriggerExit(Collider other)
         {
             // Debug.Log($"OnTriggerExit: {other.gameObject.name}");
+            if (!controlsEnabled)
+                return;
 
             var temporaryCopyRenderer = other.gameObject.GetComponent<CopyToLineRenderer>();
             if (temporaryCopyRenderer != null && temporaryCopyRenderer.bezier != null)
