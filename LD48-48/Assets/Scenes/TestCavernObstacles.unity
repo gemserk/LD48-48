@@ -213,8 +213,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213877975}
-  m_LocalRotation: {x: 0.4199288, y: 0.000000019483887, z: -0.00000000901524, w: 0.90755713}
-  m_LocalPosition: {x: -0.00000027793965, y: 13.622187, z: -10.473196}
+  m_LocalRotation: {x: 0.4199288, y: -0.000000019483899, z: 0.000000009015246, w: 0.90755713}
+  m_LocalPosition: {x: 0.0000002779398, y: 13.622187, z: -10.473196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1803047294}
@@ -424,8 +424,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903285494}
-  m_LocalRotation: {x: 0.4199288, y: 0.000000019483887, z: -0.00000000901524, w: 0.90755713}
-  m_LocalPosition: {x: -0.00000027793965, y: 13.622187, z: -10.473196}
+  m_LocalRotation: {x: 0.4199288, y: -0.000000019483899, z: 0.000000009015246, w: 0.90755713}
+  m_LocalPosition: {x: 0.0000002779398, y: 13.622187, z: -10.473196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1976230761}
@@ -594,22 +594,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MineCartPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 6539906006148726172, guid: 541e5b850b1d9184db90bffcf8a21bef, type: 3}
-      propertyPath: maxRandomForceOnCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6539906006148726172, guid: 541e5b850b1d9184db90bffcf8a21bef, type: 3}
-      propertyPath: minRandomForceOnCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6539906006148726172, guid: 541e5b850b1d9184db90bffcf8a21bef, type: 3}
-      propertyPath: maxRandomTorqueOnCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6539906006148726172, guid: 541e5b850b1d9184db90bffcf8a21bef, type: 3}
-      propertyPath: minRandomTorqueOnCollision
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6539906006148726175, guid: 541e5b850b1d9184db90bffcf8a21bef, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -662,10 +646,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1575093528}
-    - target: {fileID: 6539906006669464094, guid: 541e5b850b1d9184db90bffcf8a21bef, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 1575093528}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 541e5b850b1d9184db90bffcf8a21bef, type: 3}
 --- !u!4 &1271935592 stripped
@@ -715,7 +695,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-322016
+  m_Name: pb_Mesh-120572
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

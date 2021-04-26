@@ -136,8 +136,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 1, a: 1}
-  m_Intensity: 10
-  m_Range: 10
+  m_Intensity: 100
+  m_Range: 30
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -231,37 +231,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightColors:
     serializedVersion: 2
-    key0: {r: 0.24313726, g: 0, b: 1, a: 1}
-    key1: {r: 0.9843137, g: 1, b: 0, a: 1}
-    key2: {r: 0.99607843, g: 0, b: 0.003921569, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
+    key0: {r: 0, g: 0.17254902, b: 1, a: 1}
+    key1: {r: 1, g: 0.23921569, b: 1, a: 1}
+    key2: {r: 0, g: 0.9441657, b: 1, a: 1}
+    key3: {r: 1, g: 0.4002926, b: 0, a: 1}
+    key4: {r: 0.35315418, g: 1, b: 0, a: 1}
+    key5: {r: 1, g: 0.9060749, b: 0, a: 1}
+    key6: {r: 1, g: 0, b: 0.24949217, a: 1}
+    key7: {r: 0, g: 0.17416215, b: 1, a: 1}
     ctime0: 0
-    ctime1: 34117
-    ctime2: 65535
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
+    ctime1: 9059
+    ctime2: 19468
+    ctime3: 29298
+    ctime4: 38550
+    ctime5: 46453
+    ctime6: 58982
+    ctime7: 65535
     atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
+    atime1: 193
+    atime2: 65535
+    atime3: 65535
+    atime4: 65535
+    atime5: 65535
+    atime6: 65535
+    atime7: 65535
     m_Mode: 0
-    m_NumColorKeys: 3
-    m_NumAlphaKeys: 2
+    m_NumColorKeys: 8
+    m_NumAlphaKeys: 3
   lights:
   - {fileID: 645967009259333488}
   - {fileID: 2251446565478582151}
-  animationSpeed: 0.15
+  animationSpeed: 0.5
   cartRenderer: {fileID: 6539906006669464092}
 --- !u!1 &4618525338608583720
 GameObject:
