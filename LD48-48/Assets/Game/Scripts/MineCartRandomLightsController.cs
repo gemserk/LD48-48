@@ -35,6 +35,8 @@ namespace Game.Scripts
 
         public float animationSpeed = 1;
 
+        public MeshRenderer cartRenderer;
+
         private PingPongAnimation animation = new PingPongAnimation
         {
             animationSpeed = 1
@@ -50,6 +52,11 @@ namespace Game.Scripts
             foreach (var light in lights)
             {
                 light.color = color;
+            }
+
+            if (cartRenderer != null)
+            {
+                cartRenderer.material.SetColor("_EmissionColor", color);
             }
         }
     }

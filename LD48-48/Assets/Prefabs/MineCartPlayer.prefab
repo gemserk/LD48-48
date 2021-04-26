@@ -261,7 +261,8 @@ MonoBehaviour:
   lights:
   - {fileID: 645967009259333488}
   - {fileID: 2251446565478582151}
-  animationSpeed: 0.5
+  animationSpeed: 0.15
+  cartRenderer: {fileID: 6539906006669464092}
 --- !u!1 &4618525338608583720
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,6 +689,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53d8c61191dd8ee4db51dfbb5f8d5b89, type: 3}
+--- !u!23 &6539906006669464092 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7614521876617730633, guid: 53d8c61191dd8ee4db51dfbb5f8d5b89, type: 3}
+  m_PrefabInstance: {fileID: 3706003521607796821}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6539906006669464095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7614521876617730634, guid: 53d8c61191dd8ee4db51dfbb5f8d5b89, type: 3}
@@ -782,13 +788,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3974f77d95fe433db5dee5c215368fb, type: 3}
---- !u!1 &4867753517324301532 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2634692488897956874, guid: e3974f77d95fe433db5dee5c215368fb, type: 3}
-  m_PrefabInstance: {fileID: 7430361955050911958}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1684721262163812014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8105537989669594744, guid: e3974f77d95fe433db5dee5c215368fb, type: 3}
+  m_PrefabInstance: {fileID: 7430361955050911958}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4867753517324301532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2634692488897956874, guid: e3974f77d95fe433db5dee5c215368fb, type: 3}
   m_PrefabInstance: {fileID: 7430361955050911958}
   m_PrefabAsset: {fileID: 0}
