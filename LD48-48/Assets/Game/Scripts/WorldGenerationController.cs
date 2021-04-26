@@ -97,7 +97,7 @@ namespace Game.Scripts
                 var mineTrack = mineTrackObject.GetComponent<MineCartTrack>();
 
                 mineTrack.trackMeshGenerator = meshGenerator;
-                //mineTrack.regenerateMeshOnLateUpdate = true;
+                mineTrack.regenerateMeshOnLateUpdate = false;
                 
                 CopySplineSegment(masterSpline, mineTrack.spline, start, end, offset);
                 
