@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/NewResolutionDialog.unity
+    guid: df8cedca3747c413da6007cceec08ff7
+  - enabled: 1
     path: Assets/Scenes/CavernSceneNoDecos.unity
     guid: ce0e59a8a52ad754885fb243a1e9033d
-  - enabled: 1
-    path: Assets/Scenes/CavernScene.unity
-    guid: f7d4e59f546714f7491ee32627a7be10
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: aa5c2d71938f1aa40a23478d594d11ba, type: 2}
