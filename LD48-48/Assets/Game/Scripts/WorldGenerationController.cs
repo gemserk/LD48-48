@@ -31,6 +31,8 @@ namespace Game.Scripts
         public Vector3 minOffsetTrack;
         public Vector3 maxOffsetTrack;
 
+        private List<MineCartTrack> tracks = new List<MineCartTrack>();
+
         private void Start()
         {
             var masterSplineObject = new GameObject("~MasterSpline")
@@ -59,10 +61,10 @@ namespace Game.Scripts
             
             CopyToSpline(masterSpline, points);
 
+            CreateMineTrack(new Vector3(0, 0, 0));
             CreateMineTrack(new Vector3(-UnityEngine.Random.Range(minOffsetTrack.x, maxOffsetTrack.x), 
                 UnityEngine.Random.Range(minOffsetTrack.y, maxOffsetTrack.y), 
                 UnityEngine.Random.Range(minOffsetTrack.z, maxOffsetTrack.z)));
-            CreateMineTrack(new Vector3(0, 0, 0));
             CreateMineTrack(new Vector3(UnityEngine.Random.Range(minOffsetTrack.x, maxOffsetTrack.x), 
                 UnityEngine.Random.Range(minOffsetTrack.y, maxOffsetTrack.y), 
                 UnityEngine.Random.Range(minOffsetTrack.z, maxOffsetTrack.z)));
@@ -94,6 +96,8 @@ namespace Game.Scripts
             var segmentLength = UnityEngine.Random.Range(minSegmentLength, maxSegmentLength);
             
             CopySplineSegment(masterSpline, mineTrack.spline, 0, segmentLength, offset);
+
+            tracks.Add(mineTrack);
         }
 
         private static void CopySplineSegment(BezierSpline sourceSpline, BezierSpline targetSpline, int start, int end, Vector3 offset)
@@ -133,6 +137,15 @@ namespace Game.Scripts
             spline.AutoConstructSpline2();
             if (splineAutogenerateNormals)
                 spline.AutoCalculateNormals();
+        }
+
+        public void ReattachPlayerToNearest()
+        {
+            var middleTrack = tracks[0];
+            var point = middleTrack.spline.FindNearestPointTo(mineCartController.transform.position);
+            mineCartController.transform.position = point;
+
+            mineCartController.ReactivateControls();
         }
     }
 }

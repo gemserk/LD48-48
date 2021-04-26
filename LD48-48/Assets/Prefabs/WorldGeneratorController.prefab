@@ -88,6 +88,10 @@ MonoBehaviour:
   camera: {fileID: 0}
   lookAhead: 50
   cleanBehind: 0
+  onDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  yOffsetDeath: -30
 --- !u!1 &4822543804802527258
 GameObject:
   m_ObjectHideFlags: 0

@@ -182,8 +182,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213877975}
-  m_LocalRotation: {x: 0.4199288, y: -0.000000019483899, z: 0.000000009015246, w: 0.90755713}
-  m_LocalPosition: {x: 0.0000002779398, y: 13.622187, z: -10.473196}
+  m_LocalRotation: {x: 0.4199288, y: 0.000000019483887, z: -0.00000000901524, w: 0.90755713}
+  m_LocalPosition: {x: -0.00000027793965, y: 13.622187, z: -10.473196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1803047294}
@@ -393,8 +393,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903285494}
-  m_LocalRotation: {x: 0.4199288, y: -0.000000019483899, z: 0.000000009015246, w: 0.90755713}
-  m_LocalPosition: {x: 0.0000002779398, y: 13.622187, z: -10.473196}
+  m_LocalRotation: {x: 0.4199288, y: 0.000000019483887, z: -0.00000000901524, w: 0.90755713}
+  m_LocalPosition: {x: -0.00000027793965, y: 13.622187, z: -10.473196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1976230761}
@@ -663,6 +663,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6539906006148726175, guid: 541e5b850b1d9184db90bffcf8a21bef, type: 3}
   m_PrefabInstance: {fileID: 1271935591}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1468399598 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4822543804802527256, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
+  m_PrefabInstance: {fileID: 1830331351}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c009bf144e446abd22d5be309c68c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1575093528
 Mesh:
   m_ObjectHideFlags: 0
@@ -978,6 +989,34 @@ PrefabInstance:
     - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
       propertyPath: lookAhead
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
+      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
+      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
+      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1468399598}
+    - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
+      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
+      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReattachPlayerToNearest
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
+      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Game.Scripts.WorldGenerationController, Gemserk.LD4848
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
+      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4822543804802527255, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
       propertyPath: m_RootOrder

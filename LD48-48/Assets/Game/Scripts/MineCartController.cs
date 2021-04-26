@@ -48,6 +48,11 @@ namespace Game.Scripts
             bezierWalker.onPathCompleted.AddListener(OnPathCompleted);
         }
 
+        public void ReactivateControls()
+        {
+            controlsEnabled = true;
+        }
+
         private void OnPathCompleted()
         {
             if (currentMineCartTrack != null)
