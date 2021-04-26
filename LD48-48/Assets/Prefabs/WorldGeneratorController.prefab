@@ -96,8 +96,8 @@ MonoBehaviour:
   stepDistanceMin: 5
   stepDistanceMax: 10
   descentPerStep: 0
-  maxRandomOffset: {x: -10, y: 0}
-  minRandomOffset: {x: 10, y: 0}
+  maxRandomOffset: {x: -6, y: -0.5}
+  minRandomOffset: {x: 6, y: 0.5}
 --- !u!1 &4304704400678527700
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,6 +276,7 @@ Transform:
   m_Children:
   - {fileID: 3168933857175615831}
   - {fileID: 4968020433890190518}
+  - {fileID: 1255966755942334292}
   m_Father: {fileID: 4822543804802527255}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -303,6 +304,56 @@ MonoBehaviour:
   strategies:
   - {fileID: 3805244187637687036}
   - {fileID: 843767304810243626}
+  - {fileID: 1439013865203097840}
+--- !u!1 &5655817979108154017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1255966755942334292}
+  - component: {fileID: 1439013865203097840}
+  m_Layer: 0
+  m_Name: SpinStrategy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1255966755942334292
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5655817979108154017}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2038348916627781550}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1439013865203097840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5655817979108154017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e5642748c27427daf87422fcd23a4a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probabiltiy: 0.25
+  stepDistanceMin: 5
+  stepDistanceMax: 10
+  descentPerStep: 0
+  maxRandomOffset: {x: 3, y: 0}
+  minRandomOffset: {x: 6, y: 0}
 --- !u!1001 &4822543805303845848
 PrefabInstance:
   m_ObjectHideFlags: 0
