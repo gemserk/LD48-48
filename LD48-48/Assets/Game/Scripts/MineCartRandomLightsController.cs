@@ -37,6 +37,8 @@ namespace Game.Scripts
 
         public MeshRenderer cartRenderer;
 
+        private Color currentColor;
+        
         private PingPongAnimation animation = new PingPongAnimation
         {
             animationSpeed = 1
@@ -47,17 +49,21 @@ namespace Game.Scripts
             animation.animationSpeed = animationSpeed;
             
             animation.Update(Time.deltaTime);
-            var color = lightColors.Evaluate(animation.time);
+            currentColor = lightColors.Evaluate(animation.time);
 
             foreach (var light in lights)
             {
-                light.color = color;
+                light.color = currentColor;
             }
 
-            if (cartRenderer != null)
-            {
-                cartRenderer.material.SetColor("_EmissionColor", color);
-            }
+            UpdateMeshColor(cartRenderer);
+        }
+
+        public void UpdateMeshColor(MeshRenderer meshRenderer)
+        {
+            if (meshRenderer == null)
+                return;
+            meshRenderer.material.SetColor("_EmissionColor", currentColor);
         }
     }
 }

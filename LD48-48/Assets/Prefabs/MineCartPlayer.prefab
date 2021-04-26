@@ -448,6 +448,7 @@ MonoBehaviour:
   jumpActionRef: {fileID: -2605949509075620080, guid: 5d18670741e6d5542986cf88132d6d14, type: 3}
   attachToTrackParticle: {fileID: 1575235185266300323}
   attachedParticleSystem: {fileID: 0}
+  lightsController: {fileID: 421096805239478809}
 --- !u!54 &6539906006148726173
 Rigidbody:
   m_ObjectHideFlags: 0

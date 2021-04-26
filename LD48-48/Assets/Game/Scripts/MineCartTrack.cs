@@ -7,6 +7,7 @@ namespace Game.Scripts
     {
         public MeshFilter meshFilter;
         public MeshCollider meshCollider;
+        public MeshRenderer meshRenderer;
         public BezierSpline spline;
 
         public bool regenerateMeshOnLateUpdate = true;

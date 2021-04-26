@@ -29,6 +29,8 @@ namespace Game.Scripts
         private bool controlsEnabled = true;
 
         public ParticleSystem attachedParticleSystem;
+
+        public MineCartRandomLightsController lightsController;
         
         private void Start()
         {
@@ -315,6 +317,14 @@ namespace Game.Scripts
                     rigidBody.AddForce(
                         forwardWhileJumpingDirection * controlsAsset.moveWhileJumpForceFactor * Time.deltaTime,
                         ForceMode.Force);
+                }
+            }
+
+            if (lightsController != null)
+            {
+                if (currentMineCartTrack != null)
+                {
+                    lightsController.UpdateMeshColor(currentMineCartTrack.meshRenderer);
                 }
             }
         }

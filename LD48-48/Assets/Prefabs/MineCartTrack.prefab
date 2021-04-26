@@ -251,6 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshFilter: {fileID: 5891547454677979004}
   meshCollider: {fileID: 4890918273787819182}
+  meshRenderer: {fileID: 8347046215744839844}
   spline: {fileID: 6477345384456332036}
   regenerateMeshOnLateUpdate: 1
   trackMeshGenerator: {fileID: 0}
