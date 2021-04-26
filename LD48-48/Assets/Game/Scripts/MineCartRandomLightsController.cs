@@ -33,6 +33,8 @@ namespace Game.Scripts
 
         public List<Light> lights;
 
+        public float animationSpeed = 1;
+
         private PingPongAnimation animation = new PingPongAnimation
         {
             animationSpeed = 1
@@ -40,6 +42,8 @@ namespace Game.Scripts
         
         private void LateUpdate()
         {
+            animation.animationSpeed = animationSpeed;
+            
             animation.Update(Time.deltaTime);
             var color = lightColors.Evaluate(animation.time);
 

@@ -261,6 +261,7 @@ MonoBehaviour:
   lights:
   - {fileID: 645967009259333488}
   - {fileID: 2251446565478582151}
+  animationSpeed: 0.5
 --- !u!1 &4618525338608583720
 GameObject:
   m_ObjectHideFlags: 0
