@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BezierSolution;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace Game.Scripts
                 return;
 
             var generator = trackMeshGenerator.GetComponentInChildren<TrackMeshGenerator>();
-            generator.GenerateMesh(bezier, meshFilter, meshCollider);
+            generator.GenerateMesh(bezier, meshFilter, meshCollider, new List<Vector3>());
         }
     }
 }

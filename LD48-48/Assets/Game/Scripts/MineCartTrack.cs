@@ -9,6 +9,7 @@ namespace Game.Scripts
         public MeshCollider meshCollider;
         public MeshRenderer meshRenderer;
         public BezierSpline spline;
+        public LineRenderer lineRenderer;
 
         public Color turnedOffColor;
         public Color turnedOnColor;
@@ -33,15 +34,20 @@ namespace Game.Scripts
                 trackMeshGenerator.GenerateMesh(this);
             }
 
+            if (lineRenderer.positionCount < spline.Count)
+            {
+                trackMeshGenerator.Configure(spline, meshCollider, lineRenderer);
+            }
+
             turnedOnCurrentTime -= Time.deltaTime;
             
             if (turnedOnCurrentTime < 0)
             {
-                meshRenderer.material.SetColor("_EmissionColor", turnedOffColor);
+                lineRenderer.material.SetColor("_EmissionColor", turnedOffColor);
             }
             else
             {
-                meshRenderer.material.SetColor("_EmissionColor", turnedOnColor);
+                lineRenderer.material.SetColor("_EmissionColor", turnedOnColor);
             }
         }
 
