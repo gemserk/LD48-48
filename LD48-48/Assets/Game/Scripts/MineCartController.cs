@@ -31,6 +31,8 @@ namespace Game.Scripts
         public ParticleSystem attachedParticleSystem;
 
         public MineCartRandomLightsController lightsController;
+
+        public MineCartHud hud;
         
         private void Start()
         {
@@ -335,6 +337,11 @@ namespace Game.Scripts
                 {
                     currentMineCartTrack.SetAttachedColor(lightsController.currentColor);
                     // lightsController.UpdateMeshColor(currentMineCartTrack.meshRenderer);
+                }
+
+                if (hud != null)
+                {
+                    hud.SetTextColor(lightsController.currentColor);
                 }
             }
         }
