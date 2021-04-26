@@ -207,4 +207,9 @@ public class WallsSpawner : MonoBehaviour
             }
         }
     }
+
+    public List<List<GameObject>> GetActiveLightsLists()
+    {
+        return lightPrefabs.Select(o => GetOrNew(activeGOs,o)).ToList();
+    }
 }

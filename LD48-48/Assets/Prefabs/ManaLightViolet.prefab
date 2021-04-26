@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5625339713129367477}
   m_Layer: 0
-  m_Name: ManaLightBlueViolet
+  m_Name: ManaLightViolet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,8 +74,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.3653083, g: 0, b: 0.5754717, a: 1}
-  m_Intensity: 4.51
-  m_Range: 5
+  m_Intensity: 8
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
