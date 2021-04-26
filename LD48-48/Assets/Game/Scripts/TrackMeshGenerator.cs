@@ -36,8 +36,14 @@ namespace Game.Scripts
                 var pointT = (i / (float) multiplyPoints) / (float) count;
                 lineRenderer.SetPosition(i, spline.GetPoint(pointT) + offset);
             }
+
+            Mesh mesh = meshFilter.sharedMesh;
+            if (mesh == null)
+            {
+                mesh = new Mesh();
+                mesh.MarkDynamic();
+            }
             
-            var mesh = new Mesh();
             lineRenderer.BakeMesh(mesh);
             meshFilter.sharedMesh = mesh;
             meshCollider.sharedMesh = mesh;
