@@ -158,11 +158,7 @@ namespace Game.Scripts
             mineCartController.transform.position = point;
 
             RegenerateTracks();
-            middleTrack = tracks[0];
-            mineCartController.bezierWalker.spline = middleTrack.spline;
-            
-
-            mineCartController.bezierWalker.NormalizedT = 0;
+            mineCartController.DettachFromTrack();
             mineCartController.ReactivateControls();
 
             var wallsSpawnerMonitor = this.GetComponentInChildren<WallsSpawnerPlayerMonitor>();
