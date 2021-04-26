@@ -26,6 +26,9 @@ namespace Game.Scripts
 
         private BezierSpline masterSpline;
 
+        public int minSegmentSeparation = 5;
+        public int maxSegmentSeparation = 10;
+        
         public int minSegmentLength = 100;
         public int maxSegmentLength = 100;
 
@@ -76,19 +79,36 @@ namespace Game.Scripts
             // }
         }
 
-        private void CreateMineTrack(Vector3 offset)
+        private void CreateMineTrackLane(Vector3 offset)
         {
-            var mineTrackObject = Instantiate(mineTrackPrefab);
-            var mineTrack = mineTrackObject.GetComponent<MineCartTrack>();
 
-            mineTrack.trackMeshGenerator = meshGenerator;
-            mineTrack.regenerateMeshOnLateUpdate = true;
 
-            var segmentLength = UnityEngine.Random.Range(minSegmentLength, maxSegmentLength);
+            var totalPoints = masterSpline.Count;
             
-            CopySplineSegment(masterSpline, mineTrack.spline, 0, segmentLength, offset);
+            var segmentLength = UnityEngine.Random.Range(minSegmentLength, maxSegmentLength);
+            var segmentSpace = UnityEngine.Random.Range(minSegmentSeparation, maxSegmentSeparation);
 
-            tracks.Add(mineTrack);
+            var start = 0;
+            var end = start + segmentLength;
+
+            while (end < totalPoints)
+            {
+                var mineTrackObject = Instantiate(mineTrackPrefab);
+                var mineTrack = mineTrackObject.GetComponent<MineCartTrack>();
+
+                mineTrack.trackMeshGenerator = meshGenerator;
+                mineTrack.regenerateMeshOnLateUpdate = true;
+                
+                CopySplineSegment(masterSpline, mineTrack.spline, start, end, offset);
+                
+                tracks.Add(mineTrack);
+                
+                segmentLength = UnityEngine.Random.Range(minSegmentLength, maxSegmentLength);
+                segmentSpace = UnityEngine.Random.Range(minSegmentSeparation, maxSegmentSeparation);
+
+                start = end + segmentSpace;
+                end = start + segmentLength;
+            }
         }
 
         private static void CopySplineSegment(BezierSpline sourceSpline, BezierSpline targetSpline, int start, int end, Vector3 offset)
@@ -97,7 +117,7 @@ namespace Game.Scripts
             targetSpline.Initialize(count);
             for (var i = start; i < end; i++)
             {
-                if (i > sourceSpline.Count)
+                if (i >= sourceSpline.Count)
                     break;
                 
                 var targetPoint = targetSpline[i - start];
@@ -158,11 +178,11 @@ namespace Game.Scripts
             
             CopyToSpline(masterSpline, points);
 
-            CreateMineTrack(new Vector3(0, 0, 0));
-            CreateMineTrack(new Vector3(-UnityEngine.Random.Range(minOffsetTrack.x, maxOffsetTrack.x), 
+            CreateMineTrackLane(new Vector3(0, 0, 0));
+            CreateMineTrackLane(new Vector3(-UnityEngine.Random.Range(minOffsetTrack.x, maxOffsetTrack.x), 
                 UnityEngine.Random.Range(minOffsetTrack.y, maxOffsetTrack.y), 
                 UnityEngine.Random.Range(minOffsetTrack.z, maxOffsetTrack.z)));
-            CreateMineTrack(new Vector3(UnityEngine.Random.Range(minOffsetTrack.x, maxOffsetTrack.x), 
+            CreateMineTrackLane(new Vector3(UnityEngine.Random.Range(minOffsetTrack.x, maxOffsetTrack.x), 
                 UnityEngine.Random.Range(minOffsetTrack.y, maxOffsetTrack.y), 
                 UnityEngine.Random.Range(minOffsetTrack.z, maxOffsetTrack.z)));
         }

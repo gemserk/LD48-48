@@ -242,10 +242,12 @@ MonoBehaviour:
   mineTrackMeshGenerator: {fileID: 5091740593288377241}
   wallsSpawner: {fileID: 4310149073402554711}
   splineAutogenerateNormals: 0
-  minSegmentLength: 100
-  maxSegmentLength: 100
-  minOffsetTrack: {x: 4, y: -2, z: 0}
-  maxOffsetTrack: {x: 7, y: 2, z: 0}
+  minSegmentSeparation: 0
+  maxSegmentSeparation: 2
+  minSegmentLength: 7
+  maxSegmentLength: 14
+  minOffsetTrack: {x: 4, y: -3, z: -5}
+  maxOffsetTrack: {x: 7, y: 3, z: 5}
 --- !u!1 &5180548783827427480
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +300,7 @@ MonoBehaviour:
   descentPerStep: -0.1
   maxRandomOffset: {x: 2, y: 2}
   minRandomOffset: {x: 1, y: 1}
-  steps: 100
+  steps: 300
   strategyChangeMinPoints: 5
   strategyChangeMaxPoints: 10
   strategies:

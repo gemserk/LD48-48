@@ -60,7 +60,16 @@ namespace Game.Scripts
             if (currentMineCartTrack != null)
             {
                 currentMineCartTrack.DisableCollisions();
+                
+                if (attached)
+                {
+                    var forwardVelocity = transform.forward.normalized * bezierWalker.speed * controlsAsset.jumpForwardSpeedFactor;
+                    rigidBody.isKinematic = false;
+                    rigidBody.velocity = forwardVelocity;
+                }
+                
                 DettachFromTrack();
+                
             }
         }
 
