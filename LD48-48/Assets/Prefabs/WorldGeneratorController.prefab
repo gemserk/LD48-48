@@ -154,14 +154,14 @@ MonoBehaviour:
   floorSpawnChance: 0.25
   lightsDistanceBetween: 3
   lightPrefabs:
-  - {fileID: 4496946856997334115, guid: 679747e939d564c2f902aa3dc0287e80, type: 3}
-  - {fileID: 4496946856997334115, guid: 05b8e294473dd4895b17109a1c5da406, type: 3}
-  - {fileID: 4496946856997334115, guid: ede93c71c8e2840d59fd36836df452c9, type: 3}
-  lightOffsetY: 1
+  - {fileID: 8066367075385230716, guid: 679747e939d564c2f902aa3dc0287e80, type: 3}
+  - {fileID: 8066367075385230716, guid: ede93c71c8e2840d59fd36836df452c9, type: 3}
+  - {fileID: 8066367075385230716, guid: 05b8e294473dd4895b17109a1c5da406, type: 3}
+  lightOffsetY: 5
   wallDistanceFromPathMin: 20
   wallDistanceFromPathMax: 15
   wallDeltaMovement: 1
-  wallSpawnChance: 0.15
+  wallSpawnChance: 0.25
   wallPrefabs:
   - {fileID: 2964811313734450062, guid: 383b3ac15e76c492db252b51155f8888, type: 3}
   wallYPos: -50
@@ -184,11 +184,23 @@ MonoBehaviour:
   mainSpline: {fileID: 0}
   wallsSpawner: {fileID: 2439387777865704239}
   camera: {fileID: 0}
-  lookAhead: 50
+  lookAhead: 100
   cleanBehind: 0
   onDeathEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4822543804802527256}
+        m_TargetAssemblyTypeName: Game.Scripts.WorldGenerationController, Gemserk.LD4848
+        m_MethodName: ReattachPlayerToNearest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   yOffsetDeath: -30
 --- !u!1 &4822543804802527258
 GameObject:
@@ -244,8 +256,8 @@ MonoBehaviour:
   splineAutogenerateNormals: 0
   minSegmentSeparation: 0
   maxSegmentSeparation: 2
-  minSegmentLength: 7
-  maxSegmentLength: 14
+  minSegmentLength: 100
+  maxSegmentLength: 100
   minOffsetTrack: {x: 4, y: -3, z: -5}
   maxOffsetTrack: {x: 7, y: 3, z: 5}
 --- !u!1 &5180548783827427480
@@ -300,7 +312,7 @@ MonoBehaviour:
   descentPerStep: -0.1
   maxRandomOffset: {x: 2, y: 2}
   minRandomOffset: {x: 1, y: 1}
-  steps: 300
+  steps: 100
   strategyChangeMinPoints: 5
   strategyChangeMaxPoints: 10
   strategies:

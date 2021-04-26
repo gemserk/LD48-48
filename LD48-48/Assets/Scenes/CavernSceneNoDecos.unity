@@ -1091,62 +1091,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2439387777865704239, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: lightOffsetY
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2439387777865704239, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: wallSpawnChance
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2439387777865704239, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: lightPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 8066367075385230716, guid: 679747e939d564c2f902aa3dc0287e80, type: 3}
-    - target: {fileID: 2439387777865704239, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: lightPrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 8066367075385230716, guid: ede93c71c8e2840d59fd36836df452c9, type: 3}
-    - target: {fileID: 2439387777865704239, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: lightPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 8066367075385230716, guid: 05b8e294473dd4895b17109a1c5da406, type: 3}
     - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
       propertyPath: camera
       value: 
       objectReference: {fileID: 903285497}
-    - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: lookAhead
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1468399598}
-    - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReattachPlayerToNearest
-      objectReference: {fileID: 0}
-    - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game.Scripts.WorldGenerationController, Gemserk.LD4848
-      objectReference: {fileID: 0}
-    - target: {fileID: 4310149073402554711, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 4822543804802527255, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1192,29 +1140,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4822543804802527256, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: maxOffsetTrack.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4822543804802527256, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: maxOffsetTrack.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4822543804802527256, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: minOffsetTrack.y
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4822543804802527256, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: minOffsetTrack.z
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4822543804802527256, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
       propertyPath: mineCartController
       value: 
       objectReference: {fileID: 1265867532}
-    - target: {fileID: 4822543804802527257, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
-      propertyPath: descentPerStep
-      value: -5
-      objectReference: {fileID: 0}
     - target: {fileID: 4822543804802527258, guid: e6bfc62965c302844971c0aba5a933ad, type: 3}
       propertyPath: m_Name
       value: ~WorldGeneratorController
