@@ -10,6 +10,13 @@ namespace Game.Scripts
         public MeshRenderer meshRenderer;
         public BezierSpline spline;
 
+        public Color turnedOffColor;
+        public Color turnedOnColor;
+
+        public float turnedOnDuration;
+
+        private float turnedOnCurrentTime;
+
         public bool regenerateMeshOnLateUpdate = true;
         
         public TrackMeshGenerator trackMeshGenerator;
@@ -25,6 +32,23 @@ namespace Game.Scripts
             {
                 trackMeshGenerator.GenerateMesh(this);
             }
+
+            turnedOnCurrentTime -= Time.deltaTime;
+            
+            if (turnedOnCurrentTime < 0)
+            {
+                meshRenderer.material.SetColor("_EmissionColor", turnedOffColor);
+            }
+            else
+            {
+                meshRenderer.material.SetColor("_EmissionColor", turnedOnColor);
+            }
+        }
+
+        public void SetAttachedColor(Color color)
+        {
+            turnedOnColor = color;
+            turnedOnCurrentTime = turnedOnDuration;
         }
     }
 }

@@ -324,7 +324,8 @@ namespace Game.Scripts
             {
                 if (currentMineCartTrack != null)
                 {
-                    lightsController.UpdateMeshColor(currentMineCartTrack.meshRenderer);
+                    currentMineCartTrack.SetAttachedColor(lightsController.currentColor);
+                    // lightsController.UpdateMeshColor(currentMineCartTrack.meshRenderer);
                 }
             }
         }

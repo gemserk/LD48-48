@@ -37,7 +37,7 @@ namespace Game.Scripts
 
         public MeshRenderer cartRenderer;
 
-        private Color currentColor;
+        public Color currentColor;
         
         private PingPongAnimation animation = new PingPongAnimation
         {
@@ -59,7 +59,7 @@ namespace Game.Scripts
             UpdateMeshColor(cartRenderer);
         }
 
-        public void UpdateMeshColor(MeshRenderer meshRenderer)
+        private void UpdateMeshColor(MeshRenderer meshRenderer)
         {
             if (meshRenderer == null)
                 return;

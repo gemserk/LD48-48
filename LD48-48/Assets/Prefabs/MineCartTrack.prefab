@@ -253,6 +253,9 @@ MonoBehaviour:
   meshCollider: {fileID: 4890918273787819182}
   meshRenderer: {fileID: 8347046215744839844}
   spline: {fileID: 6477345384456332036}
+  turnedOffColor: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
+  turnedOnColor: {r: 0, g: 1, b: 0.99999976, a: 1}
+  turnedOnDuration: 10
   regenerateMeshOnLateUpdate: 1
   trackMeshGenerator: {fileID: 0}
 --- !u!1 &7040963955310010830
