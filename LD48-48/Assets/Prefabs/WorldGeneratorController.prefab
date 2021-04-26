@@ -48,8 +48,8 @@ MonoBehaviour:
   floorPrefabs:
   - {fileID: 8975798757828218513, guid: 38347aaf5190c47fab678a0358aa006c, type: 3}
   floorWidth: 20
-  floorMinDistance: 10
-  floorMaxDistance: 15
+  floorMinDistance: 15
+  floorMaxDistance: 25
   floorPrefabOffsetX: 0.77
   floorPrefabDistanceBetween: 1.55
   floorDeltaMovement: 0.5

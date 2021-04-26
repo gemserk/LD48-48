@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Game.Scripts
@@ -16,16 +15,14 @@ namespace Game.Scripts
         public AnimationCurve curve;
         public Transform modelTransform;
 
-        private float animationSpeed;
-        private float time;
-        private float timeDirection = 1;
+        private PingPongAnimation pingPongAnimation = new PingPongAnimation();
 
         private void Awake()
         {
             if (animateModel)
             {
-                time = UnityEngine.Random.Range(0.0f, 1.0f);
-                animationSpeed = randomSpeed.Evaluate(UnityEngine.Random.Range(0.0f, 1.0f));
+                pingPongAnimation.time = UnityEngine.Random.Range(0.0f, 1.0f);
+                pingPongAnimation.animationSpeed = randomSpeed.Evaluate(UnityEngine.Random.Range(0.0f, 1.0f));
             }
         }
 
@@ -41,19 +38,10 @@ namespace Game.Scripts
                 return;
             }
             
-            time += Time.deltaTime * timeDirection * animationSpeed;
-            var value = curve.Evaluate(time);
+            pingPongAnimation.Update(Time.deltaTime);
+            
+            var value = curve.Evaluate(pingPongAnimation.time);
             modelTransform.localPosition = animationDirection * value;
-
-            if (time > 1.0f)
-            {
-                timeDirection = -1f;
-            }
-
-            if (time < 0)
-            {
-                timeDirection = 1.0f;
-            }
         }
     }
 }
