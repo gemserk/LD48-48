@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using BezierSolution;
+using Cinemachine;
 using UnityEngine;
 
 namespace Game.Scripts
@@ -142,10 +143,16 @@ namespace Game.Scripts
         public void ReattachPlayerToNearest()
         {
             var middleTrack = tracks[0];
-            var point = middleTrack.spline.FindNearestPointTo(mineCartController.transform.position);
+            //var point = middleTrack.spline.FindNearestPointTo(mineCartController.transform.position);
+            var point = middleTrack.spline.GetPoint(0);
+            var tangent = middleTrack.spline.GetTangent(0);
             mineCartController.transform.position = point;
 
+            mineCartController.bezierWalker.NormalizedT = 0;
             mineCartController.ReactivateControls();
+
+            var wallsSpawnerMonitor = this.GetComponentInChildren<WallsSpawnerPlayerMonitor>();
+            wallsSpawnerMonitor.Restart();
         }
     }
 }

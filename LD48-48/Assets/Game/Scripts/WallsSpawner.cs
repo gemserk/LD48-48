@@ -23,6 +23,7 @@ public class WallsSpawner : MonoBehaviour
     public float lightsDistanceBetween;
     public List<GameObject> lightPrefabs;
     public float lightOffsetY;
+    
     private float lightLastSpawnDistance = 0;
     
     float floorNormalizedT = 0;
@@ -66,9 +67,9 @@ public class WallsSpawner : MonoBehaviour
         if (generateUntil == 0)
             return;
         
+        CleanBehind();
         GenerateFloor();
         GenerateWalls();
-        CleanBehind();
     }
 
     private void GenerateFloor()
@@ -211,5 +212,27 @@ public class WallsSpawner : MonoBehaviour
     public List<List<GameObject>> GetActiveLightsLists()
     {
         return lightPrefabs.Select(o => GetOrNew(activeGOs,o)).ToList();
+    }
+
+    public void Restart()
+    { 
+         lightLastSpawnDistance = 0;
+        
+         floorNormalizedT = 0;
+         floorIteration = 0;
+         floorCummulativeDistance = 0;
+         wallNormalizedT = 0;
+         wallCummulativeDistance = 0;
+
+         generateUntil = 0;
+         cleanBehind = float.MaxValue;
+
+         foreach (var activeGOsKV in activeGOs)
+         {
+             var activeGOList = activeGOsKV.Value;
+             var freeGOList = GetOrNew(freeGOs, activeGOsKV.Key);
+             freeGOList.AddRange(activeGOList);
+             activeGOList.Clear();
+         }
     }
 }

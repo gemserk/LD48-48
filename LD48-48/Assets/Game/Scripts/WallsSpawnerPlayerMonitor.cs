@@ -38,5 +38,11 @@ namespace Game.Scripts
                 onDeathEvent.Invoke();
             }
         }
+
+        public void Restart()
+        {
+            wallsSpawner.generateUntil = 0;
+            wallsSpawner.Restart();
+        }
     }
 }
