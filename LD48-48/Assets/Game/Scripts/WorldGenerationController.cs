@@ -58,17 +58,7 @@ namespace Game.Scripts
 
         private IEnumerator WorldGenerationOverTime()
         {
-            var points = trackGenerator.GeneratePoints(mineCartController.transform.position);
-            
-            CopyToSpline(masterSpline, points);
-
-            CreateMineTrack(new Vector3(0, 0, 0));
-            CreateMineTrack(new Vector3(-UnityEngine.Random.Range(minOffsetTrack.x, maxOffsetTrack.x), 
-                UnityEngine.Random.Range(minOffsetTrack.y, maxOffsetTrack.y), 
-                UnityEngine.Random.Range(minOffsetTrack.z, maxOffsetTrack.z)));
-            CreateMineTrack(new Vector3(UnityEngine.Random.Range(minOffsetTrack.x, maxOffsetTrack.x), 
-                UnityEngine.Random.Range(minOffsetTrack.y, maxOffsetTrack.y), 
-                UnityEngine.Random.Range(minOffsetTrack.z, maxOffsetTrack.z)));
+           RegenerateTracks();
 
             // CopySplineSegment(masterSpline, mineTrack.spline, 0, 20, Vector3.zero);
 
@@ -145,14 +135,36 @@ namespace Game.Scripts
             var middleTrack = tracks[0];
             //var point = middleTrack.spline.FindNearestPointTo(mineCartController.transform.position);
             var point = middleTrack.spline.GetPoint(0);
-            var tangent = middleTrack.spline.GetTangent(0);
             mineCartController.transform.position = point;
+
+            RegenerateTracks();
+            middleTrack = tracks[0];
+            mineCartController.bezierWalker.spline = middleTrack.spline;
+            
 
             mineCartController.bezierWalker.NormalizedT = 0;
             mineCartController.ReactivateControls();
 
             var wallsSpawnerMonitor = this.GetComponentInChildren<WallsSpawnerPlayerMonitor>();
             wallsSpawnerMonitor.Restart();
+        }
+
+        public void RegenerateTracks()
+        {
+            tracks.ForEach(t => GameObject.Destroy(t.gameObject));
+            tracks.Clear();
+            
+            var points = trackGenerator.GeneratePoints(mineCartController.transform.position);
+            
+            CopyToSpline(masterSpline, points);
+
+            CreateMineTrack(new Vector3(0, 0, 0));
+            CreateMineTrack(new Vector3(-UnityEngine.Random.Range(minOffsetTrack.x, maxOffsetTrack.x), 
+                UnityEngine.Random.Range(minOffsetTrack.y, maxOffsetTrack.y), 
+                UnityEngine.Random.Range(minOffsetTrack.z, maxOffsetTrack.z)));
+            CreateMineTrack(new Vector3(UnityEngine.Random.Range(minOffsetTrack.x, maxOffsetTrack.x), 
+                UnityEngine.Random.Range(minOffsetTrack.y, maxOffsetTrack.y), 
+                UnityEngine.Random.Range(minOffsetTrack.z, maxOffsetTrack.z)));
         }
     }
 }
