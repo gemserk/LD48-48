@@ -310,17 +310,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hud
       objectReference: {fileID: 0}
-    - target: {fileID: 3702521015063795845, guid: 52fb9aadaf7a1dd4f801f0e15f4b9d00, type: 3}
-      propertyPath: colorIntensity
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5219949036501370081, guid: 52fb9aadaf7a1dd4f801f0e15f4b9d00, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 903285497}
-    - target: {fileID: 5219949037944268273, guid: 52fb9aadaf7a1dd4f801f0e15f4b9d00, type: 3}
-      propertyPath: m_text
-      value: 5124123
+    - target: {fileID: 5219949036501370081, guid: 52fb9aadaf7a1dd4f801f0e15f4b9d00, type: 3}
+      propertyPath: m_PlaneDistance
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8299875498795267687, guid: 52fb9aadaf7a1dd4f801f0e15f4b9d00, type: 3}
       propertyPath: m_RootOrder
