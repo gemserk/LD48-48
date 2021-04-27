@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdee7e641df548edb930cc429c846cf5, type: 3}
   m_Name: PointsBalance
   m_EditorClassIdentifier: 
-  pointsHudMultiplier: 10
+  pointsHudMultiplier: 100
   pointsPerTime: 1
-  jumpMultiplier: 100
+  jumpMultiplier: 10
