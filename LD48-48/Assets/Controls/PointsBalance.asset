@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsHudMultiplier: 100
   pointsPerTime: 1
-  jumpMultiplier: 10
+  jumpMultiplier: 100
