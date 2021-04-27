@@ -48,7 +48,8 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0",
-    "com.tayx.graphy": "2.1.3"
+    "com.tayx.graphy": "2.1.3",
+    "com.sitterheim.unityresolutiondialog": "https://github.com/sitterheim/UnityResolutionDialog.git#release/stable"
   },
   "scopedRegistries": [
     {
