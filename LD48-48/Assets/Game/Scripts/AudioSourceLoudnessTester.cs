@@ -29,6 +29,8 @@ namespace Game.Scripts
         private Dictionary<GameObject, LightBeatController> lightComponents = new Dictionary<GameObject, LightBeatController>();
         public WallsSpawner spawner;
 
+        public MineCartHud hud;
+
         // Use this for initialization
         private void Awake()
         {
@@ -78,12 +80,14 @@ namespace Game.Scripts
                             lightComponents[lightGO] = light;
                         }
 
-
-
                         light.Change(clipLoudness);
                     }
                 }
-                
+
+                if (hud != null)
+                {
+                    hud.musicIntensityMultiplier = clipLoudness;
+                }
             }
         }
     }

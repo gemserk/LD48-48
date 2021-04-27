@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 5219949037944268273}
-  colorIntensity: 4
+  colorIntensity: 8
+  musicIntensityMultiplier: 1
   spacing: 90
 --- !u!1 &5219949036501370012
 GameObject:

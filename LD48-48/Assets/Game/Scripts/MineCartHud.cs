@@ -10,6 +10,9 @@ namespace Game.Scripts
         private Material fontMaterial;
 
         public float colorIntensity = 4.0f;
+        
+        public float musicIntensityMultiplier = 1.0f;
+        
         public float spacing = 60;
         
         private void Awake()
@@ -19,7 +22,7 @@ namespace Game.Scripts
 
         public void SetTextColor(Color color)
         {
-            fontMaterial.SetColor(ShaderUtilities.ID_GlowColor, color * colorIntensity);
+            fontMaterial.SetColor(ShaderUtilities.ID_GlowColor, color * colorIntensity * musicIntensityMultiplier);
             text.fontSharedMaterial = fontMaterial;
         }
 
