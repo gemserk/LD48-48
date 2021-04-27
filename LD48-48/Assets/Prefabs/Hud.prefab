@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 5219949037944268273}
+  colorIntensity: 1.5
 --- !u!1 &5219949036501370012
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +193,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CYBERPUNKART - 2048
+  m_text: 5124123
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1aed2fe7512b5ae428f37fc2b67a0068, type: 2}
   m_sharedMaterial: {fileID: 7387804816644861824, guid: 1aed2fe7512b5ae428f37fc2b67a0068, type: 2}
