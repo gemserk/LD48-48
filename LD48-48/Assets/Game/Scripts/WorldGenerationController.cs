@@ -159,7 +159,7 @@ namespace Game.Scripts
 
             RegenerateTracks();
             mineCartController.DettachFromTrack();
-            mineCartController.ReactivateControls();
+            mineCartController.Respawn();
 
             var wallsSpawnerMonitor = this.GetComponentInChildren<WallsSpawnerPlayerMonitor>();
             wallsSpawnerMonitor.Restart();

@@ -6,6 +6,7 @@ namespace Game.Scripts
     public class MineCartController : MonoBehaviour
     {
         public MineCartControlsAsset controlsAsset;
+        public MineCartPointsAsset pointsAsset;
         
         public BezierWalkerWithSpeedFixedUpdate bezierWalker;
 
@@ -33,6 +34,8 @@ namespace Game.Scripts
         public MineCartRandomLightsController lightsController;
 
         public MineCartHud hud;
+
+        private float points;
         
         private void Start()
         {
@@ -52,9 +55,10 @@ namespace Game.Scripts
             bezierWalker.onPathCompleted.AddListener(OnPathCompleted);
         }
 
-        public void ReactivateControls()
+        public void Respawn()
         {
             controlsEnabled = true;
+            points = 0.0f;
         }
 
         private void OnPathCompleted()
@@ -219,6 +223,8 @@ namespace Game.Scripts
             if (!controlsEnabled)
                 return;
 
+            var pointsSpeed = 1.0f;
+
             if (attachedParticleSystem != null)
             {
                 // var emission = attachedParticleSystem.emission;
@@ -311,6 +317,8 @@ namespace Game.Scripts
                 localEulerAngles.x = tiltVector.y * controlsAsset.forwardTiltAngle;
                 modelTransform.localEulerAngles = localEulerAngles;
 
+                pointsSpeed = bezierWalker.speed;
+
             } else 
             {
                 if (currentTimeToActivateRigidBody < 0)
@@ -329,8 +337,13 @@ namespace Game.Scripts
                         forwardWhileJumpingDirection * controlsAsset.moveWhileJumpForceFactor * Time.deltaTime,
                         ForceMode.Force);
                 }
+
+                // TODO: multiplier is increased while jumping....
+                pointsSpeed = pointsAsset.jumpMultiplier;
             }
 
+            points += pointsAsset.pointsPerTime * Time.deltaTime * pointsSpeed;
+            
             if (lightsController != null)
             {
                 if (currentMineCartTrack != null)
@@ -342,6 +355,7 @@ namespace Game.Scripts
                 if (hud != null)
                 {
                     hud.SetTextColor(lightsController.currentColor);
+                    hud.SetPoints(points * pointsAsset.pointsHudMultiplier);
                 }
             }
         }

@@ -263,6 +263,7 @@ MonoBehaviour:
   - {fileID: 2251446565478582151}
   animationSpeed: 0.5
   cartRenderer: {fileID: 6539906006669464092}
+  currentColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &4618525338608583720
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,6 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlsAsset: {fileID: 11400000, guid: 692b74a343bd6324fbd45576504aaf1c, type: 2}
+  pointsAsset: {fileID: 11400000, guid: 7571114a91fc0e548853569b63c62359, type: 2}
   bezierWalker: {fileID: 6539906006148726163}
   modelTransform: {fileID: 6539906006669464095}
   rigidBody: {fileID: 6539906006148726173}
@@ -449,6 +451,7 @@ MonoBehaviour:
   attachToTrackParticle: {fileID: 1575235185266300323}
   attachedParticleSystem: {fileID: 0}
   lightsController: {fileID: 421096805239478809}
+  hud: {fileID: 0}
 --- !u!54 &6539906006148726173
 Rigidbody:
   m_ObjectHideFlags: 0
