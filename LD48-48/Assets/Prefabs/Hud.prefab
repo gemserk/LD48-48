@@ -47,7 +47,7 @@ MonoBehaviour:
   text: {fileID: 5219949037944268273}
   colorIntensity: 8
   musicIntensityMultiplier: 1
-  spacing: 90
+  spacing: 80
 --- !u!1 &5219949036501370012
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,8 +222,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
-  m_fontSizeBase: 90
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
