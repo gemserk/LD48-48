@@ -10,6 +10,7 @@ namespace Game.Scripts
         private Material fontMaterial;
 
         public float colorIntensity = 4.0f;
+        public float spacing = 60;
         
         private void Awake()
         {
@@ -24,7 +25,7 @@ namespace Game.Scripts
 
         public void SetPoints(float points)
         {
-            text.text = $"{Mathf.Round(points)}";
+            text.text = $"<mspace=mspace={spacing}>{Mathf.Round(points)}</mspace>";
         }
     }
 }
